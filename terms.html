@@ -47,10 +47,45 @@
             height: 40px;
             background-color: rgba(220, 38, 38, 0.3);
         }
-        .prose h1, .prose h2, .prose h3 { @apply text-slate-800 dark:text-white; }
-        .prose p, .prose li { @apply text-slate-600 dark:text-slate-400; }
-        .prose strong { @apply text-slate-700 dark:text-slate-200; }
-        .prose a { @apply text-red-600 dark:text-red-500 hover:underline; }
+        /* Standard CSS for Legal Content for CDN Compatibility */
+        .legal-content h1 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: #1e293b; /* slate-800 */
+            margin-bottom: 1rem;
+        }
+        .legal-content h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700;
+            color: #1e293b;
+            margin-top: 2.5rem; /* mt-10 */
+            margin-bottom: 1rem;
+        }
+        .legal-content p, .legal-content li {
+            margin-bottom: 1.5rem; /* mb-6 */
+            line-height: 1.75; /* leading-relaxed */
+            color: #475569; /* slate-600 */
+        }
+        .legal-content ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            margin-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .legal-content a {
+            color: #dc2626; /* red-600 */
+        }
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark Mode Styles */
+        html.dark .legal-content h1,
+        html.dark .legal-content h2 { color: #ffffff; }
+        html.dark .legal-content p,
+        html.dark .legal-content li { color: #94a3b8; } /* slate-400 */
+        html.dark .legal-content a { color: #f87171; } /* red-400 */
+
     </style>
      <script>
         // Set theme on initial load
@@ -86,42 +121,57 @@
     </header>
 
     <main class="container mx-auto px-6 py-16 md:py-24">
-        <article class="prose dark:prose-invert lg:prose-lg max-w-4xl mx-auto">
-            <h1>Terms and Conditions for TravelHawk</h1>
-            <p class="lead text-slate-500 dark:text-slate-400">Last Updated: 8 September 2025</p>
-            <p>Please read these Terms and Conditions ("Terms") carefully before using the TravelHawk mobile application (the "App") operated by us.</p>
-            <p>Your access to and use of the App is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the App.</p>
-            <p>By accessing or using the App, you agree to be bound by these Terms.</p>
+        <div class="max-w-4xl mx-auto legal-content">
+            <h1>Terms and Conditions</h1>
+            <p class="lead text-slate-500 dark:text-slate-400 !mb-10">Last Updated: July 29, 2025</p>
             
-            <h2>1. Disclaimer</h2>
-            <p><strong>TravelHawk is an independent, third-party application.</strong> It is NOT affiliated with, endorsed by, or in any way officially connected with the South African Police Service (SAPS) or any other government entity. All crime statistics presented within the App are sourced directly from publicly available information provided by SAPS. While we strive to present this data accurately, we do not guarantee its completeness or timeliness.</p>
-            <p>The App is provided for informational purposes only and is intended to enhance situational awareness. It is not a replacement for personal vigilance, caution, or official safety advice. We are not liable for any incidents, damages, or losses that may occur during your travels.</p>
+            <h2>1. Introduction and Acceptance of Terms</h2>
+            <p>Welcome to Travelhawk (“the App”), a product of Skeep Technologies (Pty) Ltd (“we,” “us,” or “our”). The App provides travel-related safety information, alerts, and advisories to help you travel with greater awareness.</p>
+            <p>By downloading, installing, or using the Travelhawk app, you agree to be bound by these Terms and Conditions (“Terms”). If you do not agree to these terms, you must not use the App. We reserve the right to modify these Terms at any time, and your continued use of the App after any changes signifies your acceptance of the new Terms.</p>
             
-            <h2>2. Premium Features and Subscriptions</h2>
-            <p>Certain features of the App, such as "Hawk Mode," may require an in-app purchase of a subscription. Payments are processed through the Apple App Store or Google Play Store, and are subject to their respective terms and conditions.</p>
-            
+            <h2>2. Description of Service</h2>
+            <p>Travelhawk is a mobile application designed to serve as a travel safety companion. The App provides users with:</p>
+            <ul>
+                <li><strong>Travel Safety Information:</strong> Access to curated safety advisories, travel alerts, and location-based safety ratings.</li>
+                <li><strong>Emergency Resources:</strong> Quick access to relevant emergency contact numbers for your location.</li>
+                <li><strong>Location-Based Services:</strong> Informational alerts based on your geographical location to enhance your travel awareness.</li>
+            </ul>
+            <p>The App is provided for informational purposes only. All content is provided to you on a read-only basis.</p>
+
             <h2>3. Privacy Policy</h2>
-            <p>Your privacy is important to us. Our <a href="privacy.html">Privacy Policy</a> details how we collect, use, and protect your information. By using our App, you agree to the collection and use of information in accordance with our Privacy Policy. This includes the collection of anonymized analytics and usage data to improve our services and measure the effectiveness of our advertising, as detailed in the policy.</p>
-            <p>Please review our Privacy Policy carefully.</p>
+            <p>Your privacy is important to us. Our <a href="privacy.html">Privacy Policy</a> details how we collect, use, and protect your information. By using our App, you agree to the collection and use of information in accordance with our Privacy Policy. This includes the collection of anonymized analytics and usage data to improve our services and measure the effectiveness of our advertising, as detailed in the policy. Please review our Privacy Policy carefully.</p>
             
-            <h2>4. User Conduct</h2>
-            <p>You agree not to use the App in any way that is unlawful, or harms us, our service providers, or any other person.</p>
+            <h2>4. Location-Based Services</h2>
+            <p>To provide relevant safety information, the App utilizes location-based services. By using the App, you consent to our use of your device's location data as described in our Privacy Policy. You can disable location services in your device's settings at any time, but be aware that doing so will significantly limit the App's functionality and its ability to provide location-specific alerts.</p>
             
             <h2>5. Intellectual Property</h2>
-            <p>The App and its original content, features, and functionality are and will remain the exclusive property of TravelHawk and its licensors.</p>
+            <p>All content, trademarks, logos, features, and functionality within the App are the exclusive property of Skeep Technologies (Pty) Ltd and its licensors. The App is protected by copyright, trademark, and other laws of the Republic of South Africa and foreign countries. You may not copy, modify, distribute, sell, or lease any part of our App or its content.</p>
+
+            <h2>6. Disclaimers and Limitation of Liability</h2>
+            <p><strong>For Informational Purposes Only:</strong> The content provided in the App is for informational purposes only and does not constitute professional advice. While we strive to provide accurate and timely information, we make no representation or warranty regarding the accuracy, completeness, or reliability of any data within the App.</p>
+            <p><strong>No Guarantee of Safety:</strong> The Travelhawk app is an informational tool and does not guarantee your safety. The use of information from the App is at your sole risk. You are solely responsible for your personal safety and decisions at all times. Always exercise caution and good judgment when traveling.</p>
+            <p><strong>Service Availability:</strong> We do not guarantee that the App will operate without interruption or be error-free.</p>
             
-            <h2>6. Limitation of Liability</h2>
-            <p>In no event shall TravelHawk be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the App.</p>
+            <h2>7. Subscriptions</h2>
+            <p>Should Travelhawk offer premium features via a subscription, the following terms would apply:</p>
+            <ul>
+                <li><strong>Fees:</strong> You agree to pay the subscription fee and any applicable taxes.</li>
+                <li><strong>Billing:</strong> The fee would be charged as described at the time of purchase.</li>
+                <li><strong>Cancellation:</strong> You may cancel your subscription at any time through the applicable app store (e.g., Apple App Store, Google Play Store).</li>
+            </ul>
             
-            <h2>7. Changes to These Terms</h2>
-            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide notice of any changes by updating the "Last Updated" date of these Terms.</p>
+            <h2>8. Termination</h2>
+            <p>We reserve the right to terminate or suspend the App or your access to it at any time, without notice, for any reason, including any breach of these Terms.</p>
             
-            <h2>8. Contact Us</h2>
-            <p>If you have any questions about these Terms, please <a href="contact.html">contact us</a>.</p>
-        </article>
+            <h2>9. Governing Law and Jurisdiction</h2>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of South Africa. You agree to submit to the exclusive jurisdiction of the courts located in Johannesburg, South Africa, to resolve any legal matter arising from these Terms.</p>
+
+            <h2>10. Contact Information</h2>
+            <p>If you have any questions about these Terms and Conditions, please contact us at: <a href="mailto:support@travelhawk.co.za">support@travelhawk.co.za</a>.</p>
+        </div>
     </main>
 
-    <footer class="bg-slate-800 text-slate-400 py-12">
+    <footer class="bg-slate-900 text-slate-400 py-12">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center space-x-6 mb-6">
                 <a href="contact.html" class="hover:text-white transition-colors">Contact Us</a>
@@ -137,7 +187,6 @@
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             
-            // --- THEME TOGGLE LOGIC ---
             const themeToggleBtn = document.getElementById('theme-toggle');
             const htmlEl = document.documentElement;
 
@@ -151,7 +200,6 @@
                 }
             });
 
-            // --- CURSOR LOGIC ---
             const cursorDot = document.getElementById('cursor-dot');
             const interactiveElements = document.querySelectorAll('a, button');
             window.addEventListener('mousemove', (e) => {
