@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Travelhawk</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(ellipse at top, #fdfdfe, #f1f5f9);
+            transition: background 0.3s ease-in-out;
+        }
+        html.dark body {
+             background: radial-gradient(ellipse at top, #1e293b, #020617);
+        }
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #dc2626; /* red-600 */
+            border-radius: 50%;
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            transition: transform 0.2s ease-out, width 0.3s ease, height 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+        #cursor-dot.expanded {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(220, 38, 38, 0.3);
+        }
+        .prose h1, .prose h2, .prose h3 { @apply text-slate-800 dark:text-white; }
+        .prose p, .prose li { @apply text-slate-600 dark:text-slate-400; }
+        .prose strong { @apply text-slate-700 dark:text-slate-200; }
+        .prose a { @apply text-red-600 dark:text-red-500 hover:underline; }
+    </style>
+     <script>
+        // Set theme on initial load
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+<body class="text-slate-700 dark:text-slate-300 cursor-none">
+
+    <div id="cursor-dot"></div>
+
+     <!-- Header & Navigation -->
+    <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="Untitled%20design%20(9).png" alt="Travelhawk Logo" class="w-10 h-10">
+                <span class="text-2xl font-bold text-slate-800 dark:text-white">Travelhawk</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                 <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Home</a>
+                    <a href="contact.html" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Contact</a>
+                </nav>
+                <button id="theme-toggle" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                    <i data-lucide="sun" class="w-6 h-6 hidden dark:inline"></i>
+                    <i data-lucide="moon" class="w-6 h-6 dark:hidden"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <article class="prose dark:prose-invert lg:prose-lg max-w-4xl mx-auto">
+            <h1>Privacy Policy for TravelHawk</h1>
+            <p class="lead text-slate-500 dark:text-slate-400">Last Updated: 8 September 2025</p>
+            <p>Thank you for choosing TravelHawk ("we," "us," "our"). This Privacy Policy is designed to help you understand how we collect, use, and safeguard the information you provide to us when you use our mobile application (the "App").</p>
+            <p>By using our App, you consent to the data practices described in this policy.</p>
+            
+            <h2>1. Information We Collect</h2>
+            <p>We collect information to provide and improve our services. The types of information we may collect are:</p>
+            <h3>a) Information You Provide to Us:</h3>
+            <ul>
+                <li><strong>Country and Language:</strong> We collect your selected country and language to localize your app experience. This information is stored on your device.</li>
+            </ul>
+            <h3>b) Information Collected Automatically:</h3>
+            <ul>
+                <li><strong>Location Data:</strong> With your explicit permission, our "Hawk Mode" feature collects your device's precise GPS location data in the background to provide real-time safety alerts. This data is processed on your device and is not stored on our servers.</li>
+                <li><strong>Analytics and Usage Data:</strong> We use third-party services like Google Analytics for Firebase to automatically collect information about how you interact with our App. This may include:</li>
+                <li>Device Information: Your device model, operating system, and other technical information.</li>
+                <li>Usage Data: Information about your activity in the App, such as app launches, screen views, feature usage, and crash reports.</li>
+                <li>Identifiers: A unique, anonymous User ID generated by our service providers, and your device's advertising identifier (the IDFA on iOS or Google Advertising ID on Android).</li>
+            </ul>
+            <h3>c) Purchase Information:</h3>
+            <p>If you make an in-app purchase, our third-party payment processor, RevenueCat, which works with the Apple App Store and Google Play Store, will process your payment and manage your subscription status. We receive anonymized transaction information and do not collect or store your payment card details.</p>
+            
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect for the following purposes:</p>
+            <ul>
+                <li><strong>To Provide and Maintain the App:</strong> To deliver the core functionalities of the App, such as Hawk Mode alerts and the safety map.</li>
+                <li><strong>To Improve the App:</strong> To understand how our users interact with the App, identify areas for improvement, fix bugs, and enhance the user experience.</li>
+                <li><strong>For Advertising and Marketing Measurement:</strong> We use your device's advertising identifier to measure the effectiveness of our advertising campaigns. This helps us understand how users find and install our App (e.g., by clicking an ad). This is known as attribution. We do not use this information to serve you third-party ads within our App.</li>
+                <li><strong>To Manage Subscriptions:</strong> To verify and manage your access to premium features.</li>
+            </ul>
+            
+            <h2>3. Third-Party Services</h2>
+            <p>We use the following third-party services to operate and improve our App:</p>
+            <ul>
+                <li>Google Analytics for Firebase: Provides analytics and crash reporting.</li>
+                <li>Google Ads: Used for advertising our App and measuring campaign performance.</li>
+                <li>RevenueCat: Manages in-app purchases and subscriptions.</li>
+            </ul>
+            <p>These third parties may have access to your data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+            
+            <h2>4. Your Privacy Rights and Choices (for iOS Users)</h2>
+            <p>For users on iOS devices, we adhere to Apple's App Tracking Transparency (ATT) framework. Our App will ask for your permission before using your device's advertising identifier (IDFA) for tracking purposes. You can grant or deny permission through the pop-up prompt. You can change your choice at any time in your device's Settings.</p>
+            
+            <h2>5. Data Security</h2>
+            <p>We are committed to protecting your data. However, please be aware that no method of transmission over the internet or method of electronic storage is 100% secure.</p>
+            
+            <h2>6. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+            
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please <a href="contact.html">contact us</a>.</p>
+        </article>
+    </main>
+    
+    <footer class="bg-slate-800 text-slate-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="contact.html" class="hover:text-white transition-colors">Contact Us</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms & Conditions</a>
+            </div>
+            <p class="text-sm">A product of Skeep Technologies (Pty) Ltd.</p>
+            <p class="text-sm mt-2">&copy; 2025 Travelhawk. All rights reserved.</p>
+        </div>
+    </footer>
+    
+     <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // --- THEME TOGGLE LOGIC ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlEl = document.documentElement;
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (htmlEl.classList.contains('dark')) {
+                    htmlEl.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    htmlEl.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            });
+
+            // --- CURSOR LOGIC ---
+            const cursorDot = document.getElementById('cursor-dot');
+            const interactiveElements = document.querySelectorAll('a, button');
+            window.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+            });
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursorDot.classList.add('expanded'));
+                el.addEventListener('mouseleave', () => cursorDot.classList.remove('expanded'));
+            });
+        });
+    </script>
+</body>
+</html>
+
