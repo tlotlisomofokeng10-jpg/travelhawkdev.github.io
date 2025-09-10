@@ -203,8 +203,8 @@
                 let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
                 
                 let isHovering = false;
-                let currentRadius = 8;
-                let targetRadius = 8;
+                let currentRadius = 4;
+                let targetRadius = 4;
                 let rotation = 0;
 
                 function resizeCanvas() {
@@ -232,7 +232,7 @@
                     trail.x += dx * 0.2;
                     trail.y += dy * 0.2;
 
-                    targetRadius = isHovering ? 20 : 8;
+                    targetRadius = isHovering ? 20 : 4;
                     currentRadius += (targetRadius - currentRadius) * 0.2;
                     
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -246,7 +246,7 @@
                     ctx.rotate(rotation);
                     
                     ctx.beginPath();
-                    ctx.ellipse(0, 0, currentRadius + stretch * 15, currentRadius - stretch * 4, 0, 0, 2 * Math.PI);
+                    ctx.ellipse(0, 0, currentRadius + stretch * 12, currentRadius - stretch * 3, 0, 0, 2 * Math.PI);
                     
                     if (isHovering) {
                         ctx.strokeStyle = '#06b6d4'; // cyan-500
