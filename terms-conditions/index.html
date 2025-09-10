@@ -93,7 +93,7 @@
         }
     </script>
 </head>
-<body class="text-slate-700 dark:text-slate-300 cursor-none">
+<body class="text-slate-700 dark:text-slate-300">
 
     <canvas id="cursor-canvas"></canvas>
 
@@ -198,73 +198,82 @@
             });
 
             // --- CANVAS CURSOR LOGIC ---
+            const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
             const canvas = document.getElementById('cursor-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-            let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-            
-            let isHovering = false;
-            let currentRadius = 8;
-            let targetRadius = 8;
-            let rotation = 0;
 
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            window.addEventListener('mousemove', e => {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-            });
-
-            const interactiveElements = document.querySelectorAll('a, button');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => isHovering = true);
-                el.addEventListener('mouseleave', () => isHovering = false);
-            });
-
-            function animate() {
-                const dx = mouse.x - trail.x;
-                const dy = mouse.y - trail.y;
+            if (isTouchDevice) {
+                canvas.style.display = 'none';
+                document.body.style.cursor = 'auto';
+            } else {
+                document.body.classList.add('cursor-none');
+                const ctx = canvas.getContext('2d');
                 
-                trail.x += dx * 0.2;
-                trail.y += dy * 0.2;
+                let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                
+                let isHovering = false;
+                let currentRadius = 8;
+                let targetRadius = 8;
+                let rotation = 0;
 
-                targetRadius = isHovering ? 20 : 8;
-                currentRadius += (targetRadius - currentRadius) * 0.2;
-                
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const stretch = Math.min(distance / 150, 1);
-                rotation = Math.atan2(dy, dx);
-                
-                ctx.save();
-                ctx.translate(trail.x, trail.y);
-                ctx.rotate(rotation);
-                
-                ctx.beginPath();
-                ctx.ellipse(0, 0, currentRadius + stretch * 15, currentRadius - stretch * 4, 0, 0, 2 * Math.PI);
-                
-                if (isHovering) {
-                    ctx.strokeStyle = '#06b6d4'; // cyan-500
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-                } else {
-                    ctx.fillStyle = '#06b6d4'; // cyan-500
-                    ctx.fill();
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
                 }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
 
-                ctx.restore();
+                window.addEventListener('mousemove', e => {
+                    mouse.x = e.clientX;
+                    mouse.y = e.clientY;
+                });
 
-                requestAnimationFrame(animate);
+                const interactiveElements = document.querySelectorAll('a, button');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => isHovering = true);
+                    el.addEventListener('mouseleave', () => isHovering = false);
+                });
+
+                function animate() {
+                    const dx = mouse.x - trail.x;
+                    const dy = mouse.y - trail.y;
+                    
+                    trail.x += dx * 0.2;
+                    trail.y += dy * 0.2;
+
+                    targetRadius = isHovering ? 20 : 8;
+                    currentRadius += (targetRadius - currentRadius) * 0.2;
+                    
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const stretch = Math.min(distance / 150, 1);
+                    rotation = Math.atan2(dy, dx);
+                    
+                    ctx.save();
+                    ctx.translate(trail.x, trail.y);
+                    ctx.rotate(rotation);
+                    
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, currentRadius + stretch * 15, currentRadius - stretch * 4, 0, 0, 2 * Math.PI);
+                    
+                    if (isHovering) {
+                        ctx.strokeStyle = '#06b6d4'; // cyan-500
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                    } else {
+                        ctx.fillStyle = '#06b6d4'; // cyan-500
+                        ctx.fill();
+                    }
+
+                    ctx.restore();
+
+                    requestAnimationFrame(animate);
+                }
+                animate();
             }
-            animate();
         });
     </script>
 </body>
 </html>
+
