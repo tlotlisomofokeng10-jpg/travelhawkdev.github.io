@@ -32,22 +32,17 @@
         html.dark body {
              background: radial-gradient(ellipse at top, #1e293b, #020617);
         }
-        #cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #dc2626; /* red-600 */
-            border-radius: 50%;
+        /* === CANVAS CURSOR STYLES START === */
+        #cursor-canvas {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks to pass through */
             z-index: 9999;
-            pointer-events: none;
-            transition: transform 0.2s ease-out, width 0.3s ease, height 0.3s ease;
-            transform: translate(-50%, -50%);
         }
-        #cursor-dot.expanded {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(220, 38, 38, 0.3);
-        }
+        /* === CANVAS CURSOR STYLES END === */
         
         /* Standard CSS for Legal Content for CDN Compatibility */
         .legal-content h1 {
@@ -115,7 +110,7 @@
 </head>
 <body class="text-slate-700 dark:text-slate-300 cursor-none">
 
-    <div id="cursor-dot"></div>
+    <canvas id="cursor-canvas"></canvas>
 
      <!-- Header & Navigation -->
     <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
@@ -226,19 +221,74 @@
                 }
             });
 
-            // --- CURSOR LOGIC ---
-            const cursorDot = document.getElementById('cursor-dot');
+            // --- CANVAS CURSOR LOGIC ---
+            const canvas = document.getElementById('cursor-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            
+            let isHovering = false;
+            let currentRadius = 8;
+            let targetRadius = 8;
+            let rotation = 0;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            window.addEventListener('mousemove', e => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
             const interactiveElements = document.querySelectorAll('a, button');
-            window.addEventListener('mousemove', (e) => {
-                cursorDot.style.left = `${e.clientX}px`;
-                cursorDot.style.top = `${e.clientY}px`;
-            });
             interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursorDot.classList.add('expanded'));
-                el.addEventListener('mouseleave', () => cursorDot.classList.remove('expanded'));
+                el.addEventListener('mouseenter', () => isHovering = true);
+                el.addEventListener('mouseleave', () => isHovering = false);
             });
+
+            function animate() {
+                const dx = mouse.x - trail.x;
+                const dy = mouse.y - trail.y;
+                
+                trail.x += dx * 0.2;
+                trail.y += dy * 0.2;
+
+                targetRadius = isHovering ? 20 : 8;
+                currentRadius += (targetRadius - currentRadius) * 0.2;
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const stretch = Math.min(distance / 150, 1);
+                rotation = Math.atan2(dy, dx);
+                
+                ctx.save();
+                ctx.translate(trail.x, trail.y);
+                ctx.rotate(rotation);
+                
+                ctx.beginPath();
+                ctx.ellipse(0, 0, currentRadius + stretch * 15, currentRadius - stretch * 4, 0, 0, 2 * Math.PI);
+                
+                if (isHovering) {
+                    ctx.strokeStyle = '#06b6d4'; // cyan-500
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                } else {
+                    ctx.fillStyle = '#06b6d4'; // cyan-500
+                    ctx.fill();
+                }
+
+                ctx.restore();
+
+                requestAnimationFrame(animate);
+            }
+            animate();
         });
     </script>
 </body>
 </html>
-

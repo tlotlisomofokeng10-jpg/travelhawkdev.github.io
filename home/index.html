@@ -38,22 +38,19 @@
             background-size: cover;
             background-position: center 20%; /* Moved the image up */
         }
-        #cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #dc2626; /* red-600 */
-            border-radius: 50%;
+        
+        /* === CANVAS CURSOR STYLES START === */
+        #cursor-canvas {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks to pass through */
             z-index: 9999;
-            pointer-events: none;
-            transition: transform 0.2s ease-out, width 0.3s ease, height 0.3s ease;
-            transform: translate(-50%, -50%);
         }
-        #cursor-dot.expanded {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(220, 38, 38, 0.3);
-        }
+        /* === CANVAS CURSOR STYLES END === */
+        
         .animated-title > span {
             display: inline-block;
             opacity: 0;
@@ -107,7 +104,7 @@
 </head>
 <body class="text-slate-700 dark:text-slate-300 cursor-none">
 
-    <div id="cursor-dot"></div>
+    <canvas id="cursor-canvas"></canvas>
 
     <!-- Header & Navigation -->
     <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
@@ -288,7 +285,7 @@
                     </div>
                     <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg dark:shadow-black/20 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out interactive-card dark:hover:bg-slate-700" style="transition-delay: 400ms;">
                         <div class="flex items-center mb-4">
-                            <img src="Kwanele.jpeg" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <img src="../Kwanele.jpeg" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
                             <div>
                                 <p class="font-bold text-slate-800 dark:text-white">Kwanele M.</p>
                                 <p class="text-sm text-slate-500 dark:text-slate-400">Local Explorer</p>
@@ -373,17 +370,82 @@
                 }
             });
 
-            // --- CURSOR LOGIC ---
-            const cursorDot = document.getElementById('cursor-dot');
+            // --- CANVAS CURSOR LOGIC ---
+            const canvas = document.getElementById('cursor-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Using two points for the fluid trail effect
+            let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            
+            let isHovering = false;
+            let currentRadius = 8;
+            let targetRadius = 8;
+            let rotation = 0;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            window.addEventListener('mousemove', e => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
             const interactiveElements = document.querySelectorAll('a, button, .interactive-card');
-            window.addEventListener('mousemove', (e) => {
-                cursorDot.style.left = `${e.clientX}px`;
-                cursorDot.style.top = `${e.clientY}px`;
-            });
             interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursorDot.classList.add('expanded'));
-                el.addEventListener('mouseleave', () => cursorDot.classList.remove('expanded'));
+                el.addEventListener('mouseenter', () => isHovering = true);
+                el.addEventListener('mouseleave', () => isHovering = false);
             });
+
+            function animate() {
+                // Calculate distance for the trail effect
+                const dx = mouse.x - trail.x;
+                const dy = mouse.y - trail.y;
+                
+                // Lerp the trail towards the mouse
+                trail.x += dx * 0.2;
+                trail.y += dy * 0.2;
+
+                // Determine target state for radius
+                targetRadius = isHovering ? 20 : 8;
+                currentRadius += (targetRadius - currentRadius) * 0.2;
+                
+                // Clear the canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Calculate stretch and rotation for the fluid shape
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const stretch = Math.min(distance / 150, 1);
+                rotation = Math.atan2(dy, dx);
+                
+                // Draw the main cursor shape (ellipse)
+                ctx.save();
+                ctx.translate(trail.x, trail.y);
+                ctx.rotate(rotation);
+                
+                ctx.beginPath();
+                // Create a stretched ellipse shape
+                ctx.ellipse(0, 0, currentRadius + stretch * 15, currentRadius - stretch * 4, 0, 0, 2 * Math.PI);
+                
+                if (isHovering) {
+                    ctx.strokeStyle = '#06b6d4'; // cyan-500
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                } else {
+                    ctx.fillStyle = '#06b6d4'; // cyan-500
+                    ctx.fill();
+                }
+
+                ctx.restore();
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+
 
             // --- MOBILE MENU ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
