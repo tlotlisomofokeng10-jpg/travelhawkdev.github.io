@@ -58,13 +58,6 @@
             margin-top: 2.5rem; /* mt-10 */
             margin-bottom: 1rem;
         }
-        .legal-content h3 {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 700;
-            color: #1e293b;
-            margin-top: 2rem; /* mt-8 */
-            margin-bottom: 1rem;
-        }
         .legal-content p, .legal-content li {
             margin-bottom: 1.5rem; /* mb-6 */
             line-height: 1.75; /* leading-relaxed */
@@ -76,13 +69,6 @@
             margin-left: 1rem;
             margin-bottom: 1.5rem;
         }
-        .legal-content ul ul {
-             margin-left: 1.5rem;
-             margin-top: 1rem;
-        }
-        .legal-content strong {
-            color: #334155; /* slate-700 */
-        }
         .legal-content a {
             color: #dc2626; /* red-600 */
         }
@@ -92,12 +78,11 @@
 
         /* Dark Mode Styles */
         html.dark .legal-content h1,
-        html.dark .legal-content h2,
-        html.dark .legal-content h3 { color: #ffffff; }
+        html.dark .legal-content h2 { color: #ffffff; }
         html.dark .legal-content p,
         html.dark .legal-content li { color: #94a3b8; } /* slate-400 */
-        html.dark .legal-content strong { color: #e2e8f0; } /* slate-200 */
         html.dark .legal-content a { color: #f87171; } /* red-400 */
+
     </style>
      <script>
         // Set theme on initial load
@@ -108,11 +93,11 @@
         }
     </script>
 </head>
-<body class="text-slate-700 dark:text-slate-300 cursor-none">
+<body class="text-slate-700 dark:text-slate-300">
 
     <canvas id="cursor-canvas"></canvas>
 
-     <!-- Header & Navigation -->
+    <!-- Header & Navigation -->
     <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="../index.html" class="flex items-center space-x-2">
@@ -134,63 +119,46 @@
 
     <main class="container mx-auto px-6 py-16 md:py-24">
         <div class="max-w-4xl mx-auto legal-content">
-            <h1>Privacy Policy for TravelHawk</h1>
-            <p class="lead text-slate-500 dark:text-slate-400 !mb-10">Last Updated: 8 September 2025</p>
-            <p>Welcome to TravelHawk (“the App”), a product of Skeep Technologies (Pty) Ltd (“we,” “us,” or “our”). This Privacy Policy is designed to help you understand how we collect, use, and safeguard the information you provide to us when you use our mobile application (the “App”).</p>
-            <p>By using our App, you consent to the data practices described in this policy.</p>
+            <h1>Privacy Policy</h1>
+            <p class="lead text-slate-500 dark:text-slate-400 !mb-10">Last Updated: July 29, 2025</p>
             
-            <h2>1. Information We Collect</h2>
-            <p>We collect information to provide and improve our services. The types of information we may collect are:</p>
-            <h3>a) Information You Provide to Us:</h3>
+            <h2>1. Introduction</h2>
+            <p>This Privacy Policy outlines how Skeep Technologies (Pty) Ltd (“we,” “us,” or “our”) collects, uses, discloses, and protects your information when you use the TravelHawk mobile application (“the App”). We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner.</p>
+
+            <h2>2. Information We Collect</h2>
+            <p>We collect the following types of information to provide and improve our services:</p>
             <ul>
-                <li><strong>Country and Language:</strong> We collect your selected country and language to localize your app experience. This information is stored on your device.</li>
+                <li><strong>Location Data:</strong> With your explicit consent, we access your device’s precise location to provide you with relevant, real-time safety alerts and information for your current area. You can disable location services at any time through your device settings, though this will limit the App's core functionality.</li>
+                <li><strong>Usage and Analytics Data:</strong> We automatically collect anonymized data about how you interact with our App. This may include information such as your device type, operating system, session duration, features used, and crash reports. We use this data to understand user behavior, improve the App's performance and features, and troubleshoot issues.</li>
             </ul>
-            <h3>b) Information Collected Automatically:</h3>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>The information we collect is used for the following purposes:</p>
             <ul>
-                <li><strong>Location Data:</strong> With your explicit permission, our "Hawk Mode" feature collects your device's precise GPS location data in the background to provide real-time safety alerts. This data is processed on your device and is not stored on our servers.</li>
-                <li><strong>Analytics and Usage Data:</strong> We use third-party services like Google Analytics for Firebase to automatically collect information about how you interact with our App. This may include:
-                    <ul>
-                        <li>Device Information: Your device model, operating system, and other technical information.</li>
-                        <li>Usage Data: Information about your activity in the App, such as app launches, screen views, feature usage, and crash reports.</li>
-                        <li>Identifiers: A unique, anonymous User ID generated by our service providers, and your device's advertising identifier (the IDFA on iOS or Google Advertising ID on Android).</li>
-                    </ul>
-                </li>
+                <li>To operate and maintain the App.</li>
+                <li>To provide you with location-specific safety alerts and content.</li>
+                <li>To monitor and analyze usage and trends to improve your experience.</li>
+                <li>To diagnose and fix technical problems.</li>
+                <li>To measure the effectiveness of our in-app advertising and marketing campaigns.</li>
             </ul>
-            <h3>c) Purchase Information:</h3>
-            <p>If you make an in-app purchase, our third-party payment processor, RevenueCat, which works with the Apple App Store and Google Play Store, will process your payment and manage your subscription status. We receive anonymized transaction information and do not collect or store your payment card details.</p>
-            
-            <h2>2. How We Use Your Information</h2>
-            <p>We use the information we collect for the following purposes:</p>
-            <ul>
-                <li><strong>To Provide and Maintain the App:</strong> To deliver the core functionalities of the App, such as Hawk Mode alerts and the safety map.</li>
-                <li><strong>To Improve the App:</strong> To understand how our users interact with the App, identify areas for improvement, fix bugs, and enhance the user experience.</li>
-                <li><strong>For Advertising and Marketing Measurement:</strong> We use your device's advertising identifier to measure the effectiveness of our advertising campaigns. This helps us understand how users find and install our App (e.g., by clicking an ad). This is known as attribution. We do not use this information to serve you third-party ads within our App.</li>
-                <li><strong>To Manage Subscriptions:</strong> To verify and manage your access to premium features.</li>
-            </ul>
-            
-            <h2>3. Third-Party Services</h2>
-            <p>We use the following third-party services to operate and improve our App:</p>
-            <ul>
-                <li><strong>Google Analytics for Firebase:</strong> Provides analytics and crash reporting.</li>
-                <li><strong>Google Ads:</strong> Used for advertising our App and measuring campaign performance.</li>
-                <li><strong>RevenueCat:</strong> Manages in-app purchases and subscriptions.</li>
-            </ul>
-            <p>These third parties may have access to your data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
-            
-            <h2>4. Your Privacy Rights and Choices (for iOS Users)</h2>
-            <p>For users on iOS devices, we adhere to Apple's App Tracking Transparency (ATT) framework. Our App will ask for your permission before using your device's advertising identifier (IDFA) for tracking purposes. You can grant or deny permission through the pop-up prompt. You can change your choice at any time in your device's Settings.</p>
+
+            <h2>4. Data Sharing and Disclosure</h2>
+            <p>We do not sell, trade, or rent your personal identification information to others. We may share anonymized, aggregated demographic information not linked to any personal identification information with our business partners, trusted affiliates, and advertisers for the purposes outlined above. For example, we may share aggregated data on user engagement in specific regions to improve our service offerings.</p>
             
             <h2>5. Data Security</h2>
-            <p>We are committed to protecting your data. However, please be aware that no method of transmission over the internet or method of electronic storage is 100% secure.</p>
+            <p>We are committed to protecting your information. We adopt appropriate data collection, storage, and processing practices and security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information and data stored within our App.</p>
             
-            <h2>6. Changes to This Privacy Policy</h2>
-            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+            <h2>6. Your Consent</h2>
+            <p>By using our App, you consent to our collection and use of information as described in this Privacy Policy. For location-based services, we will request your explicit consent before accessing your device's location data.</p>
             
-            <h2>7. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, please <a href="contact.html">contact us</a> at support@TravelHawk.co.za.</p>
+            <h2>7. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+
+            <h2>8. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:support@TravelHawk.co.za">support@TravelHawk.co.za</a>.</p>
         </div>
     </main>
-    
+
     <footer class="bg-slate-900 text-slate-400 py-12">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center space-x-6 mb-6">
@@ -203,11 +171,10 @@
         </div>
     </footer>
     
-     <script>
+    <script>
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             
-            // --- THEME TOGGLE LOGIC ---
             const themeToggleBtn = document.getElementById('theme-toggle');
             const htmlEl = document.documentElement;
 
@@ -222,73 +189,82 @@
             });
 
             // --- CANVAS CURSOR LOGIC ---
+            const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
             const canvas = document.getElementById('cursor-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-            let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-            
-            let isHovering = false;
-            let currentRadius = 8;
-            let targetRadius = 8;
-            let rotation = 0;
 
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            window.addEventListener('mousemove', e => {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-            });
-
-            const interactiveElements = document.querySelectorAll('a, button');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => isHovering = true);
-                el.addEventListener('mouseleave', () => isHovering = false);
-            });
-
-            function animate() {
-                const dx = mouse.x - trail.x;
-                const dy = mouse.y - trail.y;
+            if (isTouchDevice) {
+                canvas.style.display = 'none';
+                document.body.style.cursor = 'auto';
+            } else {
+                document.body.classList.add('cursor-none');
+                const ctx = canvas.getContext('2d');
                 
-                trail.x += dx * 0.2;
-                trail.y += dy * 0.2;
+                let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                
+                let isHovering = false;
+                let currentRadius = 8;
+                let targetRadius = 8;
+                let rotation = 0;
 
-                targetRadius = isHovering ? 20 : 8;
-                currentRadius += (targetRadius - currentRadius) * 0.2;
-                
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const stretch = Math.min(distance / 150, 1);
-                rotation = Math.atan2(dy, dx);
-                
-                ctx.save();
-                ctx.translate(trail.x, trail.y);
-                ctx.rotate(rotation);
-                
-                ctx.beginPath();
-                ctx.ellipse(0, 0, currentRadius + stretch * 15, currentRadius - stretch * 4, 0, 0, 2 * Math.PI);
-                
-                if (isHovering) {
-                    ctx.strokeStyle = '#06b6d4'; // cyan-500
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-                } else {
-                    ctx.fillStyle = '#06b6d4'; // cyan-500
-                    ctx.fill();
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
                 }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
 
-                ctx.restore();
+                window.addEventListener('mousemove', e => {
+                    mouse.x = e.clientX;
+                    mouse.y = e.clientY;
+                });
 
-                requestAnimationFrame(animate);
+                const interactiveElements = document.querySelectorAll('a, button');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => isHovering = true);
+                    el.addEventListener('mouseleave', () => isHovering = false);
+                });
+
+                function animate() {
+                    const dx = mouse.x - trail.x;
+                    const dy = mouse.y - trail.y;
+                    
+                    trail.x += dx * 0.2;
+                    trail.y += dy * 0.2;
+
+                    targetRadius = isHovering ? 20 : 8;
+                    currentRadius += (targetRadius - currentRadius) * 0.2;
+                    
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const stretch = Math.min(distance / 150, 1);
+                    rotation = Math.atan2(dy, dx);
+                    
+                    ctx.save();
+                    ctx.translate(trail.x, trail.y);
+                    ctx.rotate(rotation);
+                    
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, currentRadius + stretch * 15, currentRadius - stretch * 4, 0, 0, 2 * Math.PI);
+                    
+                    if (isHovering) {
+                        ctx.strokeStyle = '#06b6d4'; // cyan-500
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                    } else {
+                        ctx.fillStyle = '#06b6d4'; // cyan-500
+                        ctx.fill();
+                    }
+
+                    ctx.restore();
+
+                    requestAnimationFrame(animate);
+                }
+                animate();
             }
-            animate();
         });
     </script>
 </body>
 </html>
+
