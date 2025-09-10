@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelHawk - Travel Smarter. Stay Safer.</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(ellipse at top, #fdfdfe, #f1f5f9); /* Light mode gradient */
+            transition: background 0.3s ease-in-out;
+        }
+        html.dark body {
+             background: radial-gradient(ellipse at top, #1e293b, #020617); /* Dark mode gradient */
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../Gemini_Generated_Image_9z5lpj9z5lpj9z5l.png');
+            background-size: cover;
+            background-position: center 20%; /* Moved the image up */
+        }
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #dc2626; /* red-600 */
+            border-radius: 50%;
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            transition: transform 0.2s ease-out, width 0.3s ease, height 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+        #cursor-dot.expanded {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(220, 38, 38, 0.3);
+        }
+        .animated-title > span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        .interactive-card {
+            transition: transform 0.3s ease-out, background-color 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+        .app-screenshot-container {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .app-screenshot {
+            position: absolute;
+            height: 80%;
+            max-height: 500px;
+            border-radius: 1.5rem; /* 24px */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.5s ease-out;
+            border: 4px solid white;
+        }
+        .dark .app-screenshot {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 4px solid #334155; /* slate-700 */
+        }
+        .app-screenshot-1 { z-index: 3; transform: rotate(-5deg); }
+        .app-screenshot-2 { z-index: 2; transform: translateX(-40%) rotate(-15deg) scale(0.9); }
+        .app-screenshot-3 { z-index: 1; transform: translateX(40%) rotate(10deg) scale(0.85); }
+        .app-screenshot-container:hover .app-screenshot-1 { transform: translateY(-10%) rotate(0deg) scale(1.05); }
+        .app-screenshot-container:hover .app-screenshot-2 { transform: translateX(-60%) rotate(-10deg) scale(0.9); }
+        .app-screenshot-container:hover .app-screenshot-3 { transform: translateX(60%) rotate(5deg) scale(0.85); }
+        
+        header { transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+    </style>
+    <script>
+        // Set theme on initial load
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+<body class="text-slate-700 dark:text-slate-300 cursor-none">
+
+    <div id="cursor-dot"></div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../" class="flex items-center space-x-2">
+                <img src="../Untitled%20design%20(9).png" alt="TravelHawk Logo" class="w-10 h-10">
+                <span class="text-2xl font-bold text-slate-800 dark:text-white">TravelHawk</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Home</a>
+                    <a href="#features" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Features</a>
+                    <a href="#testimonials" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Testimonials</a>
+                    <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">About</a>
+                    <a href="../contact/" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Contact</a>
+                </nav>
+                <a href="#download" class="hidden md:inline-block bg-red-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-700 magnetic-button">
+                    <span class="magnetic-content inline-block transition-transform duration-200 ease-out">Download App</span>
+                </a>
+                <button id="theme-toggle" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                    <i data-lucide="sun" class="w-6 h-6 hidden dark:inline"></i>
+                    <i data-lucide="moon" class="w-6 h-6 dark:hidden"></i>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-800 dark:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm">
+             <a href="#home" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500">Home</a>
+            <a href="#features" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500">Features</a>
+            <a href="#testimonials" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500">Testimonials</a>
+            <a href="#about" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500">About</a>
+            <a href="../contact/" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500">Contact</a>
+            <a href="#download" class="block mt-4 w-full text-center bg-red-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-700">Download App</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+            <div class="container mx-auto px-6 text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Travel Smarter. Stay Safer.</h1>
+                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-slate-200">Your personal safety companion for exploring South Africa. Get real-time crime statistics and verified safety alerts right on your phone.</p>
+                <div class="mt-8 flex justify-center items-center space-x-4">
+                    <a href="https://apps.apple.com/za/app/crimehawk/id6584519575" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                        <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
+                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png" alt="Download on the App Store" class="h-14">
+                        </span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.skeeptechnologies.crimehawk" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                         <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
+                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play" class="h-14">
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title">Get Started in 3 Easy Steps</h2>
+                <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 100ms;">Safety and awareness are just a few taps away.</p>
+                <div class="mt-12 grid md:grid-cols-3 gap-10">
+                    <div class="text-center scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 200ms;">
+                        <div class="bg-red-100 dark:bg-slate-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto">
+                            <i data-lucide="download" class="w-10 h-10 text-red-600 dark:text-red-500"></i>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-slate-800 dark:text-white">1. Download the App</h3>
+                        <p class="mt-2 text-slate-600 dark:text-slate-400">Available for free on both iOS and Android devices.</p>
+                    </div>
+                    <div class="text-center scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 300ms;">
+                        <div class="bg-red-100 dark:bg-slate-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto">
+                             <i data-lucide="map-pin" class="w-10 h-10 text-red-600 dark:text-red-500"></i>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-slate-800 dark:text-white">2. Enable Location</h3>
+                        <p class="mt-2 text-slate-600 dark:text-slate-400">Allow location services for automatic, real-time alerts as you move.</p>
+                    </div>
+                    <div class="text-center scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 400ms;">
+                        <div class="bg-red-100 dark:bg-slate-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto">
+                            <i data-lucide="shield-alert" class="w-10 h-10 text-red-600 dark:text-red-500"></i>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-slate-800 dark:text-white">3. Receive Alerts</h3>
+                        <p class="mt-2 text-slate-600 dark:text-slate-400">Get notified about crime hotspots and community reports in your area.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title">Know Before You Go</h2>
+                <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 100ms;">TravelHawk equips you with the tools you need to make informed decisions and explore with confidence.</p>
+                <div class="mt-16 grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out app-screenshot-container" style="transition-delay: 200ms;">
+                       <!-- App Screenshots -->
+                       <img src="../IMG_0961.PNG" alt="TravelHawk app displaying detailed crime statistics for a precinct" class="app-screenshot app-screenshot-2">
+                       <img src="../IMG_0960.PNG" alt="TravelHawk app showing a color-coded safety map of Cape Town" class="app-screenshot app-screenshot-1">
+                       <img src="../IMG_0962.PNG" alt="TravelHawk app showing a real-time community safety alert" class="app-screenshot app-screenshot-3">
+                    </div>
+                    <div class="space-y-10 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 300ms;">
+                        <div class="flex items-start space-x-4">
+                            <div><i data-lucide="radio-tower" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 dark:text-white">Hawk Mode</h3>
+                                <p class="mt-1 text-slate-600 dark:text-slate-400">Receive automatic, precinct-based safety alerts as you travel, without having to do a thing.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-4">
+                            <div><i data-lucide="check-check" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 dark:text-white">Verified Incident Reports</h3>
+                                <p class="mt-1 text-slate-600 dark:text-slate-400">Stay informed with up-to-the-minute incident reports curated and verified by the TravelHawk team.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-4">
+                            <div><i data-lucide="database" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 dark:text-white">Official SAPS Statistics</h3>
+                                <p class="mt-1 text-slate-600 dark:text-slate-400">Access user-friendly, visualized crime data from all 1,162 police precincts.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-4">
+                            <div><i data-lucide="siren" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 dark:text-white">Spiking Hotspot Alerts</h3>
+                                <p class="mt-1 text-slate-600 dark:text-slate-400">Receive timely warnings about roads and areas reported for vehicle spiking and other dangers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- As Recommended By Section -->
+        <section id="recommended" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title">As Recommended By</h2>
+                <div class="mt-12 flex justify-center items-center">
+                    <a href="https://www.auswaertiges-amt.de/de/reiseundsicherheit/suedafrikasicherheit-208400#content_3" target="_blank" rel="noopener noreferrer" class="scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 200ms;">
+                        <div class="flex flex-col items-center space-y-4 opacity-80 hover:opacity-100 transition-opacity">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Coat_of_arms_of_Germany.svg/100px-Coat_of_arms_of_Germany.svg.png" alt="German Federal Foreign Office Logo" class="h-24 dark:invert">
+                             <p class="text-slate-600 dark:text-slate-400 font-semibold">German Federal Foreign Office</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title">Trusted by Travellers</h2>
+                <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 100ms;">Here's what our users are saying about peace of mind on their journeys.</p>
+                <div class="mt-12 grid md:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg dark:shadow-black/20 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out interactive-card dark:hover:bg-slate-700" style="transition-delay: 200ms;">
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=96&h=96&auto-format&fit=crop" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <p class="font-bold text-slate-800 dark:text-white">Jenna S.</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Cape Town Visitor</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300">"As a solo traveler, TravelHawk was a game-changer. I felt so much more aware of my surroundings and could plan my days with confidence. A must-have app!"</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg dark:shadow-black/20 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out interactive-card dark:hover:bg-slate-700" style="transition-delay: 300ms;">
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=96&h=96&auto-format&fit=crop" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <p class="font-bold text-slate-800 dark:text-white">Mark K.</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Business Traveller</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300">"I travel to Johannesburg often for work. This app helps me understand the security landscape of different neighborhoods, which is incredibly valuable."</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg dark:shadow-black/20 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out interactive-card dark:hover:bg-slate-700" style="transition-delay: 400ms;">
+                        <div class="flex items-center mb-4">
+                            <img src="Kwanele.jpeg" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <p class="font-bold text-slate-800 dark:text-white">Kwanele M.</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Local Explorer</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300">"Even as a local, I've discovered so much about my own city. The incident reports are fantastic for knowing what's happening right now."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title">Our Mission</h2>
+                 <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 100ms;">We believe that everyone has the right to feel safe and informed while exploring the beauty of South Africa. TravelHawk was born from a desire to empower travellers and residents with transparent, accessible, and real-time safety information. We're dedicated to building a community that looks out for one another, one alert at a time.</p>
+                 <div class="mt-12 inline-flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-12 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out" style="transition-delay: 200ms;">
+                     <div class="flex flex-col items-center">
+                         <img src="../ID%20Document.pdf%20(19).png" alt="Mohau Mofokeng" class="w-32 h-32 rounded-full shadow-lg object-cover">
+                         <h4 class="mt-4 text-xl font-bold text-slate-800 dark:text-white">Mohau Mofokeng</h4>
+                         <p class="text-red-600 dark:text-red-500 font-semibold">Co-Founder</p>
+                     </div>
+                     <div class="flex flex-col items-center">
+                         <img src="../ID%20Document.pdf%20(18)%20(1).png" alt="Tlotliso Mofokeng" class="w-32 h-32 rounded-full shadow-lg object-cover">
+                         <h4 class="mt-4 text-xl font-bold text-slate-800 dark:text-white">Tlotliso Mofokeng</h4>
+                         <p class="text-red-600 dark:text-red-500 font-semibold">Co-Founder</p>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="download" class="py-20 bg-red-600">
+             <div class="container mx-auto px-6 text-center text-white">
+                <h2 class="text-3xl md:text-4xl font-bold animated-title">Ready to Explore with Confidence?</h2>
+                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-red-100">Download TravelHawk today and join a community committed to safer travel.</p>
+                <div class="mt-8 flex justify-center items-center space-x-4">
+                     <a href="https://apps.apple.com/za/app/crimehawk/id6584519575" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                        <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png" alt="Download on the App Store" class="h-12">
+                        </span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.skeeptechnologies.crimehawk" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                        <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play" class="h-12">
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="../contact/" class="hover:text-white transition-colors">Contact Us</a>
+                <a href="../privacy-policy/" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="../terms-conditions/" class="hover:text-white transition-colors">Terms & Conditions</a>
+            </div>
+            <p class="text-sm">A product of Skeep Technologies (Pty) Ltd.</p>
+            <p class="text-sm mt-2">&copy; 2025 TravelHawk. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for the DOM to be fully loaded before running scripts
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // --- THEME TOGGLE LOGIC ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlEl = document.documentElement;
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (htmlEl.classList.contains('dark')) {
+                    htmlEl.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    htmlEl.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            });
+
+            // --- CURSOR LOGIC ---
+            const cursorDot = document.getElementById('cursor-dot');
+            const interactiveElements = document.querySelectorAll('a, button, .interactive-card');
+            window.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+            });
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursorDot.classList.add('expanded'));
+                el.addEventListener('mouseleave', () => cursorDot.classList.remove('expanded'));
+            });
+
+            // --- MOBILE MENU ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+            // --- SMOOTH SCROLL ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.length > 1 && document.querySelector(href)) {
+                        e.preventDefault();
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                        document.querySelector(href).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // --- DYNAMIC HEADER ---
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-white', 'dark:bg-slate-900', 'shadow-lg', 'dark:shadow-black/20');
+                    header.classList.remove('bg-white/80', 'dark:bg-slate-950/80');
+                } else {
+                    header.classList.remove('bg-white', 'dark:bg-slate-900', 'shadow-lg', 'dark:shadow-black/20');
+                    header.classList.add('bg-white/80', 'dark:bg-slate-950/80');
+                }
+            });
+            
+            // --- SCROLL ANIMATIONS ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-5');
+                        if (entry.target.classList.contains('animated-title')) animateTitle(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.animated-title').forEach(title => {
+                const text = title.textContent.trim();
+                title.innerHTML = '';
+                text.split(' ').forEach(word => {
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    title.appendChild(span);
+                    title.appendChild(document.createTextNode(' '));
+                });
+            });
+
+            document.querySelectorAll('.scroll-animate, .animated-title').forEach(el => observer.observe(el));
+            
+            function animateTitle(title) {
+                const spans = title.querySelectorAll('span');
+                spans.forEach((span, index) => {
+                    setTimeout(() => {
+                        span.style.opacity = '1';
+                        span.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }
+
+            // --- PARALLAX EFFECT ---
+            const hero = document.getElementById('home');
+            window.addEventListener('scroll', () => {
+                hero.style.backgroundPositionY = window.pageYOffset * 0.5 + 'px';
+            });
+            
+            // --- MAGNETIC BUTTONS ---
+            document.querySelectorAll('.magnetic-button').forEach(button => {
+                const content = button.querySelector('.magnetic-content');
+                button.addEventListener('mousemove', function(e) {
+                    const { offsetX, offsetY, target } = e;
+                    const { clientWidth, clientHeight } = target;
+                    const x = (offsetX / clientWidth - 0.5) * 30;
+                    const y = (offsetY / clientHeight - 0.5) * 30;
+                    if (content) content.style.transform = `translate(${x}px, ${y}px)`;
+                });
+                button.addEventListener('mouseleave', function(e) {
+                    if (content) content.style.transform = 'translate(0, 0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
