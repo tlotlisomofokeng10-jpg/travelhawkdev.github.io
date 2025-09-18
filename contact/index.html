@@ -63,13 +63,13 @@
      <!-- Header & Navigation -->
     <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../home/" class="flex items-center space-x-2">
+            <a href="../" class="flex items-center space-x-2">
                 <img src="../Untitled%20design%20(9).png" alt="TravelHawk Logo" class="w-10 h-10">
                 <span class="text-2xl font-bold text-slate-800 dark:text-white">TravelHawk</span>
             </a>
             <div class="flex items-center space-x-4">
                  <nav class="hidden md:flex items-center space-x-8">
-                    <a href="../home/" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors" data-i18n-key="navHome">Home</a>
+                    <a href="../" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors" data-i18n-key="navHome">Home</a>
                 </nav>
                  <div class="relative">
                      <select id="language-selector" class="text-slate-600 dark:text-slate-300 bg-transparent dark:bg-slate-900/80"></select>
@@ -181,12 +181,10 @@
                     const dx = mouse.x - trail.x;
                     const dy = mouse.y - trail.y;
                     
-                    // Increased interpolation factor from 0.2 to 0.5 for faster response
                     trail.x += dx * 0.5;
                     trail.y += dy * 0.5;
                     
                     targetRadius = isHovering ? 20 : 4;
-                    // Increased radius interpolation for a snappier size change
                     currentRadius += (targetRadius - currentRadius) * 0.3;
                     
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
