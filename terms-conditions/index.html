@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms and Conditions - TravelHawk</title>
+    <title data-i18n-key="termsPageTitle">Terms and Conditions - TravelHawk</title>
     <link rel="icon" type="image/png" href="../favicon.png">
     
     <!-- Tailwind CSS -->
@@ -32,36 +32,32 @@
         html.dark body {
              background: radial-gradient(ellipse at top, #1e293b, #020617);
         }
-        /* === CANVAS CURSOR STYLES START === */
         #cursor-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Allows clicks to pass through */
+            pointer-events: none;
             z-index: 9999;
         }
-        /* === CANVAS CURSOR STYLES END === */
-
-        /* Standard CSS for Legal Content for CDN Compatibility */
         .legal-content h1 {
-            font-size: 2.25rem; /* text-4xl */
-            font-weight: 700; /* font-bold */
-            color: #1e293b; /* slate-800 */
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1e293b;
             margin-bottom: 1rem;
         }
         .legal-content h2 {
-            font-size: 1.875rem; /* text-3xl */
+            font-size: 1.875rem;
             font-weight: 700;
             color: #1e293b;
-            margin-top: 2.5rem; /* mt-10 */
+            margin-top: 2.5rem;
             margin-bottom: 1rem;
         }
         .legal-content p, .legal-content li {
-            margin-bottom: 1.5rem; /* mb-6 */
-            line-height: 1.75; /* leading-relaxed */
-            color: #475569; /* slate-600 */
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+            color: #475569;
         }
         .legal-content ul {
             list-style-type: disc;
@@ -70,19 +66,35 @@
             margin-bottom: 1.5rem;
         }
         .legal-content a {
-            color: #dc2626; /* red-600 */
+            color: #dc2626;
         }
         .legal-content a:hover {
             text-decoration: underline;
         }
 
-        /* Dark Mode Styles */
         html.dark .legal-content h1,
         html.dark .legal-content h2 { color: #ffffff; }
         html.dark .legal-content p,
-        html.dark .legal-content li { color: #94a3b8; } /* slate-400 */
-        html.dark .legal-content a { color: #f87171; } /* red-400 */
+        html.dark .legal-content li { color: #94a3b8; }
+        html.dark .legal-content a { color: #f87171; }
 
+        #language-selector {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            padding: 0.5rem 2rem 0.5rem 1rem;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            border-radius: 0.5rem;
+            border: 1px solid #cbd5e1;
+        }
+        html.dark #language-selector {
+             border-color: #475569;
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        }
     </style>
      <script>
         // Set theme on initial load
@@ -100,15 +112,18 @@
     <!-- Header & Navigation -->
     <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../index.html" class="flex items-center space-x-2">
+            <a href="../home/" class="flex items-center space-x-2">
                 <img src="../Untitled%20design%20(9).png" alt="TravelHawk Logo" class="w-10 h-10">
                 <span class="text-2xl font-bold text-slate-800 dark:text-white">TravelHawk</span>
             </a>
             <div class="flex items-center space-x-4">
                  <nav class="hidden md:flex items-center space-x-8">
-                    <a href="../index.html" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Home</a>
-                    <a href="../contact/" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">Contact</a>
+                    <a href="../home/" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors" data-i18n-key="navHome">Home</a>
+                    <a href="../contact/" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors" data-i18n-key="navContact">Contact</a>
                 </nav>
+                <div class="relative">
+                     <select id="language-selector" class="text-slate-600 dark:text-slate-300 bg-transparent dark:bg-slate-900/80"></select>
+                </div>
                 <button id="theme-toggle" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">
                     <i data-lucide="sun" class="w-6 h-6 hidden dark:inline"></i>
                     <i data-lucide="moon" class="w-6 h-6 dark:hidden"></i>
@@ -119,64 +134,64 @@
 
     <main class="container mx-auto px-6 py-16 md:py-24">
         <div class="max-w-4xl mx-auto legal-content">
-            <h1>Terms and Conditions</h1>
-            <p class="lead text-slate-500 dark:text-slate-400 !mb-10">Last Updated: July 29, 2025</p>
+            <h1 data-i18n-key="termsTitle">Terms and Conditions</h1>
+            <p class="lead text-slate-500 dark:text-slate-400 !mb-10" data-i18n-key="termsLastUpdated">Last Updated: September 18, 2025</p>
             
-            <h2>1. Introduction and Acceptance of Terms</h2>
-            <p>Welcome to TravelHawk (“the App”), a product of Skeep Technologies (Pty) Ltd (“we,” “us,” or “our”). The App provides travel-related safety information, alerts, and advisories to help you travel with greater awareness.</p>
-            <p>By downloading, installing, or using the TravelHawk app, you agree to be bound by these Terms and Conditions (“Terms”). If you do not agree to these terms, you must not use the App. We reserve the right to modify these Terms at any time, and your continued use of the App after any changes signifies your acceptance of the new Terms.</p>
+            <h2 data-i18n-key="termsSection1Title">1. Introduction and Acceptance of Terms</h2>
+            <p data-i18n-key="termsSection1Para1">Welcome to TravelHawk (“the App”), a product of Skeep Technologies (Pty) Ltd (“we,” “us,” or “our”). The App provides travel-related safety information, alerts, and advisories to help you travel with greater awareness.</p>
+            <p data-i18n-key="termsSection1Para2">By downloading, installing, or using the TravelHawk app, you agree to be bound by these Terms and Conditions (“Terms”). If you do not agree to these terms, you must not use the App. We reserve the right to modify these Terms at any time, and your continued use of the App after any changes signifies your acceptance of the new Terms.</p>
             
-            <h2>2. Description of Service</h2>
-            <p>TravelHawk is a mobile application designed to serve as a travel safety companion. The App provides users with:</p>
+            <h2 data-i18n-key="termsSection2Title">2. Description of Service</h2>
+            <p data-i18n-key="termsSection2Para1">TravelHawk is a mobile application designed to serve as a travel safety companion. The App provides users with:</p>
             <ul>
-                <li><strong>Travel Safety Information:</strong> Access to curated safety advisories, travel alerts, and location-based safety ratings.</li>
-                <li><strong>Emergency Resources:</strong> Quick access to relevant emergency contact numbers for your location.</li>
-                <li><strong>Location-Based Services:</strong> Informational alerts based on your geographical location to enhance your travel awareness.</li>
+                <li data-i18n-key="termsSection2Li1"><strong>Travel Safety Information:</strong> Access to curated safety advisories, travel alerts, and location-based safety ratings.</li>
+                <li data-i18n-key="termsSection2Li2"><strong>Emergency Resources:</strong> Quick access to relevant emergency contact numbers for your location.</li>
+                <li data-i18n-key="termsSection2Li3"><strong>Location-Based Services:</strong> Informational alerts based on your geographical location to enhance your travel awareness.</li>
             </ul>
-            <p>The App is provided for informational purposes only. All content is provided to you on a read-only basis.</p>
+            <p data-i18n-key="termsSection2Para2">The App is provided for informational purposes only. All content is provided to you on a read-only basis.</p>
 
-            <h2>3. Privacy Policy</h2>
-            <p>Your privacy is important to us. Our <a href="../privacy-policy/">Privacy Policy</a> details how we collect, use, and protect your information. By using our App, you agree to the collection and use of information in accordance with our Privacy Policy. This includes the collection of anonymized analytics and usage data to improve our services and measure the effectiveness of our advertising, as detailed in the policy. Please review our Privacy Policy carefully.</p>
+            <h2 data-i18n-key="termsSection3Title">3. Privacy Policy</h2>
+            <p data-i18n-key="termsSection3Para1">Your privacy is important to us. Our <a href="../privacy-policy/">Privacy Policy</a> details how we collect, use, and protect your information. By using our App, you agree to the collection and use of information in accordance with our Privacy Policy. This includes the collection of anonymized analytics and usage data to improve our services and measure the effectiveness of our advertising, as detailed in the policy. Please review our Privacy Policy carefully.</p>
             
-            <h2>4. Location-Based Services</h2>
-            <p>To provide relevant safety information, the App utilizes location-based services. By using the App, you consent to our use of your device's location data as described in our Privacy Policy. You can disable location services in your device's settings at any time, but be aware that doing so will significantly limit the App's functionality and its ability to provide location-specific alerts.</p>
+            <h2 data-i18n-key="termsSection4Title">4. Location-Based Services</h2>
+            <p data-i18n-key="termsSection4Para1">To provide relevant safety information, the App utilizes location-based services. By using the App, you consent to our use of your device's location data as described in our Privacy Policy. You can disable location services in your device's settings at any time, but be aware that doing so will significantly limit the App's functionality and its ability to provide location-specific alerts.</p>
             
-            <h2>5. Intellectual Property</h2>
-            <p>All content, trademarks, logos, features, and functionality within the App are the exclusive property of Skeep Technologies (Pty) Ltd and its licensors. The App is protected by copyright, trademark, and other laws of the Republic of South Africa and foreign countries. You may not copy, modify, distribute, sell, or lease any part of our App or its content.</p>
+            <h2 data-i18n-key="termsSection5Title">5. Intellectual Property</h2>
+            <p data-i18n-key="termsSection5Para1">All content, trademarks, logos, features, and functionality within the App are the exclusive property of Skeep Technologies (Pty) Ltd and its licensors. The App is protected by copyright, trademark, and other laws of the Republic of South Africa and foreign countries. You may not copy, modify, distribute, sell, or lease any part of our App or its content.</p>
 
-            <h2>6. Disclaimers and Limitation of Liability</h2>
-            <p><strong>For Informational Purposes Only:</strong> The content provided in the App is for informational purposes only and does not constitute professional advice. While we strive to provide accurate and timely information, we make no representation or warranty regarding the accuracy, completeness, or reliability of any data within the App.</p>
-            <p><strong>No Guarantee of Safety:</strong> The TravelHawk app is an informational tool and does not guarantee your safety. The use of information from the App is at your sole risk. You are solely responsible for your personal safety and decisions at all times. Always exercise caution and good judgment when traveling.</p>
-            <p><strong>Service Availability:</strong> We do not guarantee that the App will operate without interruption or be error-free.</p>
+            <h2 data-i18n-key="termsSection6Title">6. Disclaimers and Limitation of Liability</h2>
+            <p data-i18n-key="termsSection6Para1"><strong>For Informational Purposes Only:</strong> The content provided in the App is for informational purposes only and does not constitute professional advice. While we strive to provide accurate and timely information, we make no representation or warranty regarding the accuracy, completeness, or reliability of any data within the App.</p>
+            <p data-i18n-key="termsSection6Para2"><strong>No Guarantee of Safety:</strong> The TravelHawk app is an informational tool and does not guarantee your safety. The use of information from the App is at your sole risk. You are solely responsible for your personal safety and decisions at all times. Always exercise caution and good judgment when traveling.</p>
+            <p data-i18n-key="termsSection6Para3"><strong>Service Availability:</strong> We do not guarantee that the App will operate without interruption or be error-free.</p>
             
-            <h2>7. Subscriptions</h2>
-            <p>Should TravelHawk offer premium features via a subscription, the following terms would apply:</p>
+            <h2 data-i18n-key="termsSection7Title">7. Subscriptions</h2>
+            <p data-i18n-key="termsSection7Para1">Should TravelHawk offer premium features via a subscription, the following terms would apply:</p>
             <ul>
-                <li><strong>Fees:</strong> You agree to pay the subscription fee and any applicable taxes.</li>
-                <li><strong>Billing:</strong> The fee would be charged as described at the time of purchase.</li>
-                <li><strong>Cancellation:</strong> You may cancel your subscription at any time through the applicable app store (e.g., Apple App Store, Google Play Store).</li>
+                <li data-i18n-key="termsSection7Li1"><strong>Fees:</strong> You agree to pay the subscription fee and any applicable taxes.</li>
+                <li data-i18n-key="termsSection7Li2"><strong>Billing:</strong> The fee would be charged as described at the time of purchase.</li>
+                <li data-i18n-key="termsSection7Li3"><strong>Cancellation:</strong> You may cancel your subscription at any time through the applicable app store (e.g., Apple App Store, Google Play Store).</li>
             </ul>
             
-            <h2>8. Termination</h2>
-            <p>We reserve the right to terminate or suspend the App or your access to it at any time, without notice, for any reason, including any breach of these Terms.</p>
+            <h2 data-i18n-key="termsSection8Title">8. Termination</h2>
+            <p data-i18n-key="termsSection8Para1">We reserve the right to terminate or suspend the App or your access to it at any time, without notice, for any reason, including any breach of these Terms.</p>
             
-            <h2>9. Governing Law and Jurisdiction</h2>
-            <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of South Africa. You agree to submit to the exclusive jurisdiction of the courts located in Johannesburg, South Africa, to resolve any legal matter arising from these Terms.</p>
+            <h2 data-i18n-key="termsSection9Title">9. Governing Law and Jurisdiction</h2>
+            <p data-i18n-key="termsSection9Para1">These Terms shall be governed by and construed in accordance with the laws of the Republic of South Africa. You agree to submit to the exclusive jurisdiction of the courts located in Johannesburg, South Africa, to resolve any legal matter arising from these Terms.</p>
 
-            <h2>10. Contact Information</h2>
-            <p>If you have any questions about these Terms and Conditions, please contact us at: <a href="mailto:support@TravelHawk.co.za">support@TravelHawk.co.za</a>.</p>
+            <h2 data-i18n-key="termsSection10Title">10. Contact Information</h2>
+            <p data-i18n-key="termsSection10Para1">If you have any questions about these Terms and Conditions, please contact us at: <a href="mailto:support@TravelHawk.co.za">support@TravelHawk.co.za</a>.</p>
         </div>
     </main>
 
     <footer class="bg-slate-900 text-slate-400 py-12">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center space-x-6 mb-6">
-                <a href="../contact/" class="hover:text-white transition-colors">Contact Us</a>
-                <a href="../privacy-policy/" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="../terms-conditions/" class="hover:text-white transition-colors">Terms & Conditions</a>
+                <a href="../contact/" class="hover:text-white transition-colors" data-i18n-key="footerContact">Contact Us</a>
+                <a href="../privacy-policy/" class="hover:text-white transition-colors" data-i18n-key="footerPrivacy">Privacy Policy</a>
+                <a href="./" class="hover:text-white transition-colors" data-i18n-key="footerTerms">Terms & Conditions</a>
             </div>
-            <p class="text-sm">A product of Skeep Technologies (Pty) Ltd.</p>
-            <p class="text-sm mt-2">&copy; 2025 TravelHawk. All rights reserved.</p>
+            <p class="text-sm" data-i18n-key="footerProductOf">A product of Skeep Technologies (Pty) Ltd.</p>
+            <p class="text-sm mt-2" data-i18n-key="footerCopyright">&copy; 2025 TravelHawk. All rights reserved.</p>
         </div>
     </footer>
     
@@ -237,43 +252,75 @@
                 function animate() {
                     const dx = mouse.x - trail.x;
                     const dy = mouse.y - trail.y;
-                    
-                    trail.x += dx * 0.2;
-                    trail.y += dy * 0.2;
-
+                    trail.x += dx * 0.5;
+                    trail.y += dy * 0.5;
                     targetRadius = isHovering ? 20 : 4;
-                    currentRadius += (targetRadius - currentRadius) * 0.2;
-                    
+                    currentRadius += (targetRadius - currentRadius) * 0.3;
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     const stretch = Math.min(distance / 150, 1);
                     rotation = Math.atan2(dy, dx);
-                    
                     ctx.save();
                     ctx.translate(trail.x, trail.y);
                     ctx.rotate(rotation);
-                    
                     ctx.beginPath();
                     ctx.ellipse(0, 0, currentRadius + stretch * 12, currentRadius - stretch * 3, 0, 0, 2 * Math.PI);
-                    
                     if (isHovering) {
-                        ctx.strokeStyle = '#06b6d4'; // cyan-500
+                        ctx.strokeStyle = '#06b6d4';
                         ctx.lineWidth = 2;
                         ctx.stroke();
                     } else {
-                        ctx.fillStyle = '#06b6d4'; // cyan-500
+                        ctx.fillStyle = '#06b6d4';
                         ctx.fill();
                     }
-
                     ctx.restore();
-
                     requestAnimationFrame(animate);
                 }
                 animate();
             }
+
+            // --- LOCALIZATION SCRIPT ---
+            const translations = {
+                'ar': 'Arabic', 'zh': 'Chinese', 'nl': 'Dutch', 'en': 'English', 'fr': 'French',
+                'de': 'German', 'hi': 'Hindi', 'it': 'Italian', 'ja': 'Japanese', 'ko': 'Korean',
+                'pt': 'Portuguese', 'ru': 'Russian', 'es': 'Spanish', 'sv': 'Swedish', 'th': 'Thai'
+            };
+
+            const languageSelector = document.getElementById('language-selector');
+
+            for (const langCode in translations) {
+                const option = document.createElement('option');
+                option.value = langCode;
+                option.textContent = translations[langCode];
+                languageSelector.appendChild(option);
+            }
+
+            async function setLanguage(lang) {
+                const response = await fetch(`../translations/${lang}.json`);
+                if (!response.ok) {
+                    console.error(`Could not load translation file: ${lang}.json`);
+                    return;
+                }
+                const trans = await response.json();
+
+                document.querySelectorAll('[data-i18n-key]').forEach(elem => {
+                    const key = elem.getAttribute('data-i18n-key');
+                    if (trans[key]) {
+                        elem.innerHTML = trans[key];
+                    }
+                });
+                
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                localStorage.setItem('language', lang);
+                languageSelector.value = lang;
+            }
+
+            languageSelector.addEventListener('change', (e) => setLanguage(e.target.value));
+
+            const initialLang = localStorage.getItem('language') || (Object.keys(translations).includes(navigator.language.split('-')[0]) ? navigator.language.split('-')[0] : 'en');
+            setLanguage(initialLang);
         });
     </script>
 </body>
 </html>
-
