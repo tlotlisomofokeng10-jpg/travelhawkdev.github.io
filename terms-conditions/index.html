@@ -41,63 +41,44 @@
             pointer-events: none;
             z-index: 9999;
         }
-        .legal-content h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-        .legal-content h2 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .legal-content p, .legal-content li {
-            margin-bottom: 1.5rem;
-            line-height: 1.75;
-            color: #475569;
-        }
-        .legal-content ul {
-            list-style-type: disc;
-            list-style-position: inside;
-            margin-left: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .legal-content a {
-            color: #dc2626;
-        }
-        .legal-content a:hover {
-            text-decoration: underline;
-        }
-
-        html.dark .legal-content h1,
-        html.dark .legal-content h2 { color: #ffffff; }
-        html.dark .legal-content p,
-        html.dark .legal-content li { color: #94a3b8; }
+        .legal-content h1 { font-size: 2.25rem; font-weight: 700; color: #1e293b; margin-bottom: 1rem; }
+        .legal-content h2 { font-size: 1.875rem; font-weight: 700; color: #1e293b; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .legal-content p, .legal-content li { margin-bottom: 1.5rem; line-height: 1.75; color: #475569; }
+        .legal-content ul { list-style-type: disc; list-style-position: inside; margin-left: 1rem; margin-bottom: 1.5rem; }
+        .legal-content a { color: #dc2626; }
+        .legal-content a:hover { text-decoration: underline; }
+        html.dark .legal-content h1, html.dark .legal-content h2 { color: #ffffff; }
+        html.dark .legal-content p, html.dark .legal-content li { color: #94a3b8; }
         html.dark .legal-content a { color: #f87171; }
 
         #language-selector {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-color: transparent;
-            padding: 0.5rem 2rem 0.5rem 1rem;
+            -webkit-appearance: none; -moz-appearance: none; appearance: none;
+            background-color: transparent; padding: 0.5rem 2rem 0.5rem 1rem;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center;
-            background-repeat: no-repeat;
-            background-size: 1.5em 1.5em;
-            border-radius: 0.5rem;
-            border: 1px solid #cbd5e1;
+            background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em;
+            border-radius: 0.5rem; border: 1px solid #cbd5e1;
         }
         html.dark #language-selector {
              border-color: #475569;
              background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
         }
+        
+        @media (max-width: 767px) {
+            #language-selector {
+                color: transparent;
+                width: 48px;
+                padding: 0.5rem;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='12' cy='12' r='10'/%3e%3cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3e%3cpath d='M2 12h20'/%3e%3c/svg%3e");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 1.5em 1.5em;
+            }
+            html.dark #language-selector {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='12' cy='12' r='10'/%3e%3cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3e%3cpath d='M2 12h20'/%3e%3c/svg%3e");
+            }
+        }
     </style>
      <script>
-        // Set theme on initial load
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
         } else {
@@ -121,7 +102,7 @@
                     <a href="../" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors" data-i18n-key="navHome">Home</a>
                     <a href="../contact/" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors" data-i18n-key="navContact">Contact</a>
                 </nav>
-                <div class="relative">
+                 <div class="relative">
                      <select id="language-selector" class="text-slate-600 dark:text-slate-300 bg-transparent dark:bg-slate-900/80"></select>
                 </div>
                 <button id="theme-toggle" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">
@@ -135,49 +116,32 @@
     <main class="container mx-auto px-6 py-16 md:py-24">
         <div class="max-w-4xl mx-auto legal-content">
             <h1 data-i18n-key="termsTitle">Terms and Conditions</h1>
-            <p class="lead text-slate-500 dark:text-slate-400 !mb-10" data-i18n-key="termsLastUpdated">Last Updated: September 18, 2025</p>
-            
-            <h2 data-i18n-key="termsSection1Title">1. Introduction and Acceptance of Terms</h2>
-            <p data-i18n-key="termsSection1Para1">Welcome to TravelHawk (“the App”), a product of Skeep Technologies (Pty) Ltd (“we,” “us,” or “our”). The App provides travel-related safety information, alerts, and advisories to help you travel with greater awareness.</p>
-            <p data-i18n-key="termsSection1Para2">By downloading, installing, or using the TravelHawk app, you agree to be bound by these Terms and Conditions (“Terms”). If you do not agree to these terms, you must not use the App. We reserve the right to modify these Terms at any time, and your continued use of the App after any changes signifies your acceptance of the new Terms.</p>
+            <p class="lead text-slate-500 dark:text-slate-400 !mb-10" data-i18n-key="termsLastUpdated">Last Updated: July 29, 2025</p>
+
+            <h2 data-i18n-key="termsSection1Title">1. Acceptance of Terms</h2>
+            <p data-i18n-key="termsSection1Para1">By downloading, installing, or using the TravelHawk mobile application (“the App”), you agree to be bound by these Terms and Conditions (“Terms”). If you do not agree to these Terms, do not use the App. We may amend these Terms at any time by posting the amended terms in the App. Your continued use of the App after such posting will constitute your acceptance of the amended terms.</p>
             
             <h2 data-i18n-key="termsSection2Title">2. Description of Service</h2>
-            <p data-i18n-key="termsSection2Para1">TravelHawk is a mobile application designed to serve as a travel safety companion. The App provides users with:</p>
-            <ul>
-                <li data-i18n-key="termsSection2Li1"><strong>Travel Safety Information:</strong> Access to curated safety advisories, travel alerts, and location-based safety ratings.</li>
-                <li data-i18n-key="termsSection2Li2"><strong>Emergency Resources:</strong> Quick access to relevant emergency contact numbers for your location.</li>
-                <li data-i18n-key="termsSection2Li3"><strong>Location-Based Services:</strong> Informational alerts based on your geographical location to enhance your travel awareness.</li>
-            </ul>
-            <p data-i18n-key="termsSection2Para2">The App is provided for informational purposes only. All content is provided to you on a read-only basis.</p>
+            <p data-i18n-key="termsSection2Para1">TravelHawk provides users with real-time, location-based crime statistics and safety alerts. The information provided is aggregated from various public and private sources and is intended for informational purposes only. While we strive for accuracy, we do not guarantee the completeness, timeliness, or reliability of any information provided through the App.</p>
+            
+            <h2 data-i18n-key="termsSection3Title">3. User Conduct</h2>
+            <p data-i18n-key="termsSection3Para1">You agree to use the App only for lawful purposes. You are solely responsible for your use of the App and any consequences thereof. You must not use the App to harass, abuse, stalk, threaten, or otherwise violate the legal rights of others.</p>
+            
+            <h2 data-i18n-key="termsSection4Title">4. Disclaimer of Warranties</h2>
+            <p data-i18n-key="termsSection4Para1">The App is provided on an “as is” and “as available” basis. We expressly disclaim all warranties of any kind, whether express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We make no warranty that the App will meet your requirements, be uninterrupted, timely, secure, or error-free.</p>
+            
+            <h2 data-i18n-key="termsSection5Title">5. Limitation of Liability</h2>
+            <p data-i18n-key="termsSection5Para1">You expressly understand and agree that Skeep Technologies (Pty) Ltd shall not be liable for any direct, indirect, incidental, special, consequential, or exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data, or other intangible losses resulting from the use or the inability to use the App. The information provided by TravelHawk is not a substitute for official law enforcement reports or personal vigilance.</p>
+            
+            <h2 data-i18n-key="termsSection6Title">6. Intellectual Property</h2>
+            <p data-i18n-key="termsSection6Para1">All rights, title, and interest in and to the App (excluding user-provided content) are and will remain the exclusive property of Skeep Technologies (Pty) Ltd and its licensors. The App is protected by copyright, trademark, and other laws of both South Africa and foreign countries.</p>
 
-            <h2 data-i18n-key="termsSection3Title">3. Privacy Policy</h2>
-            <p data-i18n-key="termsSection3Para1">Your privacy is important to us. Our <a href="../privacy-policy/">Privacy Policy</a> details how we collect, use, and protect your information. By using our App, you agree to the collection and use of information in accordance with our Privacy Policy. This includes the collection of anonymized analytics and usage data to improve our services and measure the effectiveness of our advertising, as detailed in the policy. Please review our Privacy Policy carefully.</p>
-            
-            <h2 data-i18n-key="termsSection4Title">4. Location-Based Services</h2>
-            <p data-i18n-key="termsSection4Para1">To provide relevant safety information, the App utilizes location-based services. By using the App, you consent to our use of your device's location data as described in our Privacy Policy. You can disable location services in your device's settings at any time, but be aware that doing so will significantly limit the App's functionality and its ability to provide location-specific alerts.</p>
-            
-            <h2 data-i18n-key="termsSection5Title">5. Intellectual Property</h2>
-            <p data-i18n-key="termsSection5Para1">All content, trademarks, logos, features, and functionality within the App are the exclusive property of Skeep Technologies (Pty) Ltd and its licensors. The App is protected by copyright, trademark, and other laws of the Republic of South Africa and foreign countries. You may not copy, modify, distribute, sell, or lease any part of our App or its content.</p>
+            <h2 data-i18n-key="termsSection7Title">7. Governing Law</h2>
+            <p data-i18n-key="termsSection7Para1">These Terms shall be governed and construed in accordance with the laws of the Republic of South Africa, without regard to its conflict of law provisions.</p>
 
-            <h2 data-i18n-key="termsSection6Title">6. Disclaimers and Limitation of Liability</h2>
-            <p data-i18n-key="termsSection6Para1"><strong>For Informational Purposes Only:</strong> The content provided in the App is for informational purposes only and does not constitute professional advice. While we strive to provide accurate and timely information, we make no representation or warranty regarding the accuracy, completeness, or reliability of any data within the App.</p>
-            <p data-i18n-key="termsSection6Para2"><strong>No Guarantee of Safety:</strong> The TravelHawk app is an informational tool and does not guarantee your safety. The use of information from the App is at your sole risk. You are solely responsible for your personal safety and decisions at all times. Always exercise caution and good judgment when traveling.</p>
-            <p data-i18n-key="termsSection6Para3"><strong>Service Availability:</strong> We do not guarantee that the App will operate without interruption or be error-free.</p>
-            
-            <h2 data-i18n-key="termsSection7Title">7. Subscriptions</h2>
-            <p data-i18n-key="termsSection7Para1">Should TravelHawk offer premium features via a subscription, the following terms would apply:</p>
-            <ul>
-                <li data-i18n-key="termsSection7Li1"><strong>Fees:</strong> You agree to pay the subscription fee and any applicable taxes.</li>
-                <li data-i18n-key="termsSection7Li2"><strong>Billing:</strong> The fee would be charged as described at the time of purchase.</li>
-                <li data-i18n-key="termsSection7Li3"><strong>Cancellation:</strong> You may cancel your subscription at any time through the applicable app store (e.g., Apple App Store, Google Play Store).</li>
-            </ul>
-            
-            <h2 data-i18n-key="termsSection8Title">8. Termination</h2>
-            <p data-i18n-key="termsSection8Para1">We reserve the right to terminate or suspend the App or your access to it at any time, without notice, for any reason, including any breach of these Terms.</p>
-            
             <h2 data-i18n-key="termsSection9Title">9. Governing Law and Jurisdiction</h2>
             <p data-i18n-key="termsSection9Para1">These Terms shall be governed by and construed in accordance with the laws of the Republic of South Africa. You agree to submit to the exclusive jurisdiction of the courts located in Johannesburg, South Africa, to resolve any legal matter arising from these Terms.</p>
-
+            
             <h2 data-i18n-key="termsSection10Title">10. Contact Information</h2>
             <p data-i18n-key="termsSection10Para1">If you have any questions about these Terms and Conditions, please contact us at: <a href="mailto:support@TravelHawk.co.za">support@TravelHawk.co.za</a>.</p>
         </div>
@@ -222,10 +186,8 @@
             } else {
                 document.body.classList.add('cursor-none');
                 const ctx = canvas.getContext('2d');
-                
                 let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
                 let trail = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-                
                 let isHovering = false;
                 let currentRadius = 4;
                 let targetRadius = 4;
