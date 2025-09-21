@@ -116,5 +116,14 @@
     "formName": "全名",
     "formEmail": "电子邮件地址",
     "formMessage": "信息",
-    "formSubmit": "发送信息"
+    "formSubmit": "发送信息",
+    "sourcesPageTitle": "信息来源 - TravelHawk",
+  "sourcesTitle": "信息来源",
+  "sourcesIntro": "透明度和准确性是我们在TravelHawk的核心使命。本页面提供了应用程序中使用数据的官方、公开可用政府来源的完整列表。",
+  "sourcesDisclaimerTitle": "重要免责声明",
+  "sourcesDisclaimerText": "TravelHawk是一款<strong>独立应用程序</strong>，<strong>不代表任何政府实体</strong>。本应用程序不隶属于、不被南非政府、南非警察局（SAPS）或任何外国政府认可或与之有官方联系。所有数据均从下列来源汇总，仅供参考。虽然我们力求准确，但我们不主张所有权或保证数据的正确性，因为它取决于原始的公开发布。",
+  "sourcesCrimeStats": "犯罪统计",
+  "sourcesEmergencyNumbers": "紧急电话",
+  "sourcesEmbassies": "大使馆和领事馆信息",
+  "footerSources": "数据来源"
 }

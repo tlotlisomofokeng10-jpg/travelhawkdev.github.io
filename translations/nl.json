@@ -116,5 +116,14 @@
     "formName": "Volledige naam",
     "formEmail": "E-mailadres",
     "formMessage": "Bericht",
-    "formSubmit": "Bericht verzenden"
+    "formSubmit": "Bericht verzenden",
+    "sourcesPageTitle": "Informatiebronnen - TravelHawk",
+  "sourcesTitle": "Informatiebronnen",
+  "sourcesIntro": "Transparantie en nauwkeurigheid vormen de kern van onze missie bij TravelHawk. Deze pagina biedt een uitgebreide lijst van de officiële, openbaar beschikbare overheidsbronnen die worden gebruikt om gegevens in de applicatie te verstrekken.",
+  "sourcesDisclaimerTitle": "Belangrijke disclaimer",
+  "sourcesDisclaimerText": "TravelHawk is een <strong>onafhankelijke applicatie</strong> en <strong>vertegenwoordigt GEEN overheidsinstantie</strong>. Deze app is niet gelieerd aan, onderschreven door of officieel verbonden met de Zuid-Afrikaanse overheid, de Zuid-Afrikaanse politiedienst (SAPS) of enige buitenlandse overheid. Alle gegevens worden verzameld uit de onderstaande bronnen en zijn uitsluitend voor informatieve doeleinden. Hoewel we streven naar nauwkeurigheid, claimen we geen eigendom of garanderen we de juistheid van de gegevens, aangezien deze afhankelijk zijn van de oorspronkelijke openbare publicaties.",
+  "sourcesCrimeStats": "Criminaliteitsstatistieken",
+  "sourcesEmergencyNumbers": "Noodnummers",
+  "sourcesEmbassies": "Ambassade- & Consulaatinformatie",
+  "footerSources": "Gegevensbronnen"
 }

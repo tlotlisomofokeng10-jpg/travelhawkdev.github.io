@@ -116,5 +116,14 @@
     "formName": "Nome completo",
     "formEmail": "Endereço de e-mail",
     "formMessage": "Mensagem",
-    "formSubmit": "Enviar mensagem"
+    "formSubmit": "Enviar mensagem",
+    "sourcesPageTitle": "Fontes de Informação - TravelHawk",
+  "sourcesTitle": "Fontes de Informação",
+  "sourcesIntro": "A transparência e a precisão são centrais para a nossa missão na TravelHawk. Esta página fornece uma lista abrangente das fontes governamentais oficiais e publicamente disponíveis usadas para fornecer dados dentro do aplicativo.",
+  "sourcesDisclaimerTitle": "Aviso Importante",
+  "sourcesDisclaimerText": "O TravelHawk é uma <strong>aplicação independente</strong> e <strong>NÃO representa nenhuma entidade governamental</strong>. Este aplicativo não é afiliado, endossado ou oficialmente conectado ao governo da África do Sul, ao Serviço de Polícia da África do Sul (SAPS) ou a qualquer governo estrangeiro. Todos os dados são agregados das fontes listadas abaixo apenas para fins informativos. Embora nos esforcemos pela precisão, não reivindicamos a propriedade nem garantimos a exatidão dos dados, pois dependem dos lançamentos públicos originais.",
+  "sourcesCrimeStats": "Estatísticas de Crime",
+  "sourcesEmergencyNumbers": "Números de Emergência",
+  "sourcesEmbassies": "Informações de Embaixadas e Consulados",
+  "footerSources": "Fontes de Dados"
 }

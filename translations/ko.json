@@ -116,5 +116,14 @@
     "formName": "성명",
     "formEmail": "이메일 주소",
     "formMessage": "메시지",
-    "formSubmit": "메시지 보내기"
+    "formSubmit": "메시지 보내기",
+    "sourcesPageTitle": "정보 출처 - TravelHawk",
+  "sourcesTitle": "정보 출처",
+  "sourcesIntro": "투명성과 정확성은 TravelHawk의 핵심 사명입니다. 이 페이지는 애플리케이션 내에서 데이터를 제공하는 데 사용되는 공식적이고 공개적으로 사용 가능한 정부 출처의 포괄적인 목록을 제공합니다.",
+  "sourcesDisclaimerTitle": "중요 면책 조항",
+  "sourcesDisclaimerText": "TravelHawk는 <strong>독립적인 애플리케이션</strong>이며 <strong>어떠한 정부 기관도 대표하지 않습니다</strong>. 이 앱은 남아프리카 공화국 정부, 남아프리카 경찰청(SAPS) 또는 기타 외국 정부와 제휴, 보증 또는 공식적으로 연결되어 있지 않습니다. 모든 데이터는 정보 제공 목적으로만 아래 나열된 출처에서 수집됩니다. 정확성을 위해 노력하지만, 데이터의 소유권을 주장하거나 정확성을 보장하지는 않습니다. 이는 원본 공개 자료에 따라 달라지기 때문입니다.",
+  "sourcesCrimeStats": "범죄 통계",
+  "sourcesEmergencyNumbers": "긴급 전화번호",
+  "sourcesEmbassies": "대사관 및 영사관 정보",
+  "footerSources": "데이터 출처"
 }

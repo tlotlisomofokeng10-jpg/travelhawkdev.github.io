@@ -116,5 +116,14 @@
     "formName": "氏名",
     "formEmail": "メールアドレス",
     "formMessage": "メッセージ",
-    "formSubmit": "メッセージを送信"
+    "formSubmit": "メッセージを送信",
+    "sourcesPageTitle": "情報源 - TravelHawk",
+  "sourcesTitle": "情報源",
+  "sourcesIntro": "透明性と正確性は、TravelHawkにおける私たちの使命の中核です。このページでは、アプリケーション内でデータを提供するために使用される、公式で公開されている政府の情報源の包括的なリストを提供します。",
+  "sourcesDisclaimerTitle": "重要免責事項",
+  "sourcesDisclaimerText": "TravelHawkは<strong>独立したアプリケーション</strong>であり、<strong>いかなる政府機関をも代表するものではありません</strong>。このアプリは、南アフリカ政府、南アフリカ警察サービス（SAPS）、またはその他の外国政府と提携、承認、または公式に関係しているものではありません。すべてのデータは、情報提供のみを目的として以下の情報源から集約されています。私たちは正確性を期すよう努めていますが、データの所有権を主張したり、その正確性を保証したりするものではありません。なぜなら、それは元の公式発表に依存しているからです。",
+  "sourcesCrimeStats": "犯罪統計",
+  "sourcesEmergencyNumbers": "緊急電話番号",
+  "sourcesEmbassies": "大使館および領事館情報",
+  "footerSources": "データソース"
 }

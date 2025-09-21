@@ -278,39 +278,31 @@
 
             // --- LOCALIZATION SCRIPT ---
             const translations = {
-                'en': {
-                    "navHome": "Home",
-                    "sourcesTitle": "Sources of Information",
-                    "sourcesIntro": "Transparency and accuracy are core to our mission at TravelHawk. This page provides a comprehensive list of the official, publicly available government sources used to provide data within the application.",
-                    "sourcesDisclaimerTitle": "Important Disclaimer",
-                    "sourcesDisclaimerText": "TravelHawk is an <strong>independent application</strong> and <strong>does NOT represent any government entity</strong>. This app is not affiliated with, endorsed by, or officially connected with the South African government, the South African Police Service (SAPS), or any foreign government. All data is aggregated from the sources listed below for informational purposes only. While we strive for accuracy, we do not claim ownership or guarantee the correctness of the data, as it is dependent on the original public releases.",
-                    "sourcesCrimeStats": "Crime Statistics",
-                    "sourcesEmergencyNumbers": "Emergency Numbers",
-                    "sourcesEmbassies": "Embassy & Consulate Information",
-                    "footerContact": "Contact Us",
-                    "footerPrivacy": "Privacy Policy",
-                    "footerTerms": "Terms & Conditions",
-                    "footerSources": "Data Sources",
-                    "footerProductOf": "A product of Skeep Technologies (Pty) Ltd.",
-                    "footerCopyright": "&copy; 2025 TravelHawk. All rights reserved."
-                }
-                // NOTE: You would add other language translations here in the same format
+                'ar': 'Arabic', 'zh': 'Chinese', 'nl': 'Dutch', 'en': 'English', 'fr': 'French',
+                'de': 'German', 'hi': 'Hindi', 'it': 'Italian', 'ja': 'Japanese', 'ko': 'Korean',
+                'pt': 'Portuguese', 'ru': 'Russian', 'es': 'Spanish', 'sv': 'Swedish', 'th': 'Thai'
             };
 
             const languageSelector = document.getElementById('language-selector');
             
-            // Populate language selector
-            const langOptions = {'en': 'English', 'fr': 'French', 'de': 'German', 'es': 'Spanish'}; // Example languages
-            for (const langCode in langOptions) {
+            for (const langCode in translations) {
                 const option = document.createElement('option');
                 option.value = langCode;
-                option.textContent = langOptions[langCode];
+                option.textContent = translations[langCode];
                 languageSelector.appendChild(option);
             }
 
             async function setLanguage(lang) {
-                // For this standalone page, we'll use the inline translations object
-                const trans = translations[lang] || translations['en'];
+                const response = await fetch(`../translations/${lang}.json`);
+                if (!response.ok) {
+                    console.error(`Could not load translation file: ${lang}.json`);
+                    // Fallback to English if the selected language file is not found
+                    if (lang !== 'en') {
+                        setLanguage('en');
+                    }
+                    return;
+                }
+                const trans = await response.json();
 
                 document.querySelectorAll('[data-i18n-key]').forEach(elem => {
                     const key = elem.getAttribute('data-i18n-key');
@@ -319,14 +311,20 @@
                     }
                 });
                 
+                // Also set the main page title
+                if (trans.sourcesPageTitle) {
+                    document.title = trans.sourcesPageTitle;
+                }
+
                 document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
                 localStorage.setItem('language', lang);
                 languageSelector.value = lang;
             }
 
             languageSelector.addEventListener('change', (e) => setLanguage(e.target.value));
 
-            const initialLang = localStorage.getItem('language') || 'en';
+            const initialLang = localStorage.getItem('language') || (Object.keys(translations).includes(navigator.language.split('-')[0]) ? navigator.language.split('-')[0] : 'en');
             setLanguage(initialLang);
         });
     </script>

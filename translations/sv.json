@@ -116,5 +116,14 @@
     "formName": "Fullständigt namn",
     "formEmail": "E-postadress",
     "formMessage": "Meddelande",
-    "formSubmit": "Skicka meddelande"
+    "formSubmit": "Skicka meddelande",
+    "sourcesPageTitle": "Informationskällor - TravelHawk",
+  "sourcesTitle": "Informationskällor",
+  "sourcesIntro": "Transparens och noggrannhet är kärnan i vårt uppdrag på TravelHawk. Denna sida innehåller en omfattande lista över de officiella, allmänt tillgängliga statliga källor som används för att tillhandahålla data i applikationen.",
+  "sourcesDisclaimerTitle": "Viktig ansvarsfriskrivning",
+  "sourcesDisclaimerText": "TravelHawk är en <strong>oberoende applikation</strong> och <strong>representerar INTE någon statlig enhet</strong>. Denna app är inte ansluten till, godkänd av eller officiellt kopplad till den sydafrikanska regeringen, den sydafrikanska polisen (SAPS) eller någon utländsk regering. All data sammanställs från källorna nedan endast i informationssyfte. Även om vi strävar efter noggrannhet, gör vi inte anspråk på ägande eller garanterar korrektheten hos uppgifterna, eftersom de är beroende av de ursprungliga offentliga utgåvorna.",
+  "sourcesCrimeStats": "Brottsstatistik",
+  "sourcesEmergencyNumbers": "Nödnummer",
+  "sourcesEmbassies": "Ambassad- och konsulatinformation",
+  "footerSources": "Datakällor"
 }
