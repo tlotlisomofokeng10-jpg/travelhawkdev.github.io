@@ -1,67 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sources of Information - TravelHawk</title>
     <link rel="icon" type="image/png" href="../favicon.png">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
         }
     </script>
-    
+
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans Arabic', 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Thai', 'Noto Sans Devanagari', sans-serif;
             background: radial-gradient(ellipse at top, #fdfdfe, #f1f5f9);
             transition: background 0.3s ease-in-out;
         }
+
         html.dark body {
-             background: radial-gradient(ellipse at top, #1e293b, #020617);
+            background: radial-gradient(ellipse at top, #1e293b, #020617);
         }
+
         #cursor-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
         }
+
         #language-selector {
-            -webkit-appearance: none; -moz-appearance: none; appearance: none;
-            background-color: transparent; padding: 0.5rem 2rem 0.5rem 1rem;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            padding: 0.5rem 2rem 0.5rem 1rem;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em;
-            border-radius: 0.5rem; border: 1px solid #cbd5e1;
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            border-radius: 0.5rem;
+            border: 1px solid #cbd5e1;
         }
+
         html.dark #language-selector {
-             border-color: #475569;
-             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            border-color: #475569;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
         }
+
         @media (max-width: 767px) {
             #language-selector {
-                color: transparent; width: 48px; padding: 0.5rem;
+                color: transparent;
+                width: 48px;
+                padding: 0.5rem;
                 background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='12' cy='12' r='10'/%3e%3cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3e%3cpath d='M2 12h20'/%3e%3c/svg%3e");
-                background-position: center; background-repeat: no-repeat; background-size: 1.5em 1.5em;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 1.5em 1.5em;
             }
+
             html.dark #language-selector {
                 background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3ccircle cx='12' cy='12' r='10'/%3e%3cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3e%3cpath d='M2 12h20'/%3e%3c/svg%3e");
             }
         }
-        .prose a { color: #dc2626; text-decoration: underline; } /* Red-600 */
-        html.dark .prose a { color: #f87171; } /* Red-400 */
-        .prose a:hover { text-decoration: none; }
+
+        .prose a {
+            color: #dc2626;
+            text-decoration: underline;
+        }
+
+        /* Red-600 */
+        html.dark .prose a {
+            color: #f87171;
+        }
+
+        /* Red-400 */
+        .prose a:hover {
+            text-decoration: none;
+        }
     </style>
-     <script>
+    <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
         } else {
@@ -69,25 +105,31 @@
         }
     </script>
 </head>
+
 <body class="text-slate-700 dark:text-slate-300">
 
     <canvas id="cursor-canvas"></canvas>
 
-     <!-- Header & Navigation -->
-    <header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
+    <!-- Header & Navigation -->
+    <header
+        class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="../" class="flex items-center space-x-2">
                 <img src="../Untitled design (9).png" alt="TravelHawk Logo" class="w-10 h-10">
                 <span class="text-2xl font-bold text-slate-800 dark:text-white">TravelHawk</span>
             </a>
             <div class="flex items-center space-x-4">
-                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="../" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors" data-i18n-key="navHome">Home</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="../"
+                        class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
+                        data-i18n-key="navHome">Home</a>
                 </nav>
-                 <div class="relative">
-                     <select id="language-selector" class="text-slate-600 dark:text-slate-300 bg-transparent dark:bg-slate-900/80"></select>
+                <div class="relative">
+                    <select id="language-selector"
+                        class="text-slate-600 dark:text-slate-300 bg-transparent dark:bg-slate-900/80"></select>
                 </div>
-                <button id="theme-toggle" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                <button id="theme-toggle"
+                    class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">
                     <i data-lucide="sun" class="w-6 h-6 hidden dark:inline"></i>
                     <i data-lucide="moon" class="w-6 h-6 dark:hidden"></i>
                 </button>
@@ -97,95 +139,275 @@
 
     <main class="container mx-auto px-6 py-16 md:py-24">
         <div class="max-w-4xl mx-auto">
-            
+
             <header class="text-center mb-10 border-b border-slate-200 dark:border-slate-800 pb-6">
-                <h1 class="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white" data-i18n-key="sourcesTitle">Sources of Information</h1>
-                <p class="text-lg text-red-600 dark:text-red-500 font-semibold mt-2">TravelHawk South Africa Safety App</p>
+                <h1 class="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white" data-i18n-key="sourcesTitle">
+                    Sources of Information</h1>
+                <p class="text-lg text-red-600 dark:text-red-500 font-semibold mt-2">TravelHawk South Africa Safety App
+                </p>
             </header>
 
             <section class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 mb-12">
                 <p data-i18n-key="sourcesIntro">
-                    Transparency and accuracy are core to our mission at TravelHawk. This page provides a comprehensive list of the official, publicly available government sources used to provide data within the application.
+                    Transparency and accuracy are core to our mission at TravelHawk. This page provides a comprehensive
+                    list of the official, publicly available government sources used to provide data within the
+                    application.
                 </p>
-                <div class="bg-slate-100 dark:bg-slate-800/50 border-l-4 border-red-500 text-slate-800 dark:text-slate-300 p-4 rounded-md my-6" role="alert">
+                <div class="bg-slate-100 dark:bg-slate-800/50 border-l-4 border-red-500 text-slate-800 dark:text-slate-300 p-4 rounded-md my-6"
+                    role="alert">
                     <p class="font-bold" data-i18n-key="sourcesDisclaimerTitle">Important Disclaimer</p>
-                    <p data-i18n-key="sourcesDisclaimerText">TravelHawk is an <strong>independent application</strong> and <strong>does NOT represent any government entity</strong>. This app is not affiliated with, endorsed by, or officially connected with the South African government, the South African Police Service (SAPS), or any foreign government. All data is aggregated from the sources listed below for informational purposes only. While we strive for accuracy, we do not claim ownership or guarantee the correctness of the data, as it is dependent on the original public releases.</p>
+                    <p data-i18n-key="sourcesDisclaimerText">TravelHawk is an <strong>independent application</strong>
+                        and <strong>does NOT represent any government entity</strong>. This app is not affiliated with,
+                        endorsed by, or officially connected with the South African government, the South African Police
+                        Service (SAPS), or any foreign government. All data is aggregated from the sources listed below
+                        for informational purposes only. While we strive for accuracy, we do not claim ownership or
+                        guarantee the correctness of the data, as it is dependent on the original public releases.</p>
                 </div>
             </section>
 
             <div class="space-y-10">
                 <section>
-                    <h2 class="text-2xl font-semibold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2 mb-4" data-i18n-key="sourcesCrimeStats">Crime Statistics</h2>
+                    <h2 class="text-2xl font-semibold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2 mb-4"
+                        data-i18n-key="sourcesCrimeStats">Crime Statistics</h2>
                     <ul class="space-y-4">
                         <li class="flex flex-col sm:flex-row sm:items-center">
-                            <span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">South African Police Service (SAPS)</span>
-                            <a href="https://www.saps.gov.za/services/crimestats.php" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">https://www.saps.gov.za/services/crimestats.php</a>
+                            <span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">South African Police
+                                Service (SAPS)</span>
+                            <a href="https://www.saps.gov.za/services/crimestats.php" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">https://www.saps.gov.za/services/crimestats.php</a>
                         </li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2 mb-4" data-i18n-key="sourcesEmergencyNumbers">Emergency Numbers</h2>
+                    <h2 class="text-2xl font-semibold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2 mb-4"
+                        data-i18n-key="sourcesEmergencyNumbers">Emergency Numbers</h2>
                     <ul class="space-y-4">
-                         <li class="flex flex-col sm:flex-row sm:items-center">
-                            <span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Western Cape Government</span>
-                            <a href="https://www.westerncape.gov.za/know-who-you-can-call-emergency" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">https://www.westerncape.gov.za/know-who-you-can-call-emergency</a>
+                        <li class="flex flex-col sm:flex-row sm:items-center">
+                            <span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Western Cape
+                                Government</span>
+                            <a href="https://www.westerncape.gov.za/know-who-you-can-call-emergency" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">https://www.westerncape.gov.za/know-who-you-can-call-emergency</a>
                         </li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2 mb-4" data-i18n-key="sourcesEmbassies">Embassy &amp; Consulate Information</h2>
+                    <h2 class="text-2xl font-semibold text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2 mb-4"
+                        data-i18n-key="sourcesEmbassies">Embassy &amp; Consulate Information</h2>
                     <ul class="space-y-4 text-sm sm:text-base">
                         <!-- Full Embassy links -->
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Angola</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/angola-republic-embassy" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../angola-republic-embassy</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Argentina</span><a href="https://esafr.cancilleria.gob.ar/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">esafr.cancilleria.gob.ar</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Australia</span><a href="https://southafrica.embassy.gov.au/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">southafrica.embassy.gov.au</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Belgium</span><a href="https://southafrica.diplomatie.belgium.be/en" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">southafrica.diplomatie.belgium.be/en</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Botswana</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/botswana-republic-high-commission" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../botswana-republic-high-commission</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Brazil</span><a href="https://www.gov.br/mre/pt-br/embaixada-pretoria" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.br/mre/pt-br/embaixada-pretoria</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Canada</span><a href="https://www.international.gc.ca/country-pays/south_africa-afrique_sud/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">international.gc.ca/.../south_africa-afrique_sud</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Chile</span><a href="https://chile.gob.cl/sudafrica/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">chile.gob.cl/sudafrica</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">China</span><a href="http://za.china-embassy.gov.cn/eng/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">za.china-embassy.gov.cn/eng</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Colombia</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/colombia-republic-embassy" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.cancilleria.gov.co</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Eswatini</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/eswatini-kingdom-high-commission" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../eswatini-kingdom-high-commission</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">France</span><a href="https://za.ambafrance.org/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">za.ambafrance.org</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Germany</span><a href="https://southafrica.diplo.de/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">southafrica.diplo.de</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Ghana</span><a href="https://pretoria.mfa.gov.gh/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.mfa.gov.gh</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">India</span><a href="https://www.hcipretoria.gov.in/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">hcipretoria.gov.in</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Italy</span><a href="https://ambpretoria.esteri.it/en/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">ambpretoria.esteri.it/en</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Japan</span><a href="https://www.za.emb-japan.go.jp/itprtop_en/index.html" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">za.emb-japan.go.jp/itprtop_en/index.html</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Kenya</span><a href="https://kenya.org.za/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">kenya.org.za</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Lesotho</span><a href="https://www.gov.ls/directory/high-commission-of-the-kingdom-of-lesotho-south-africa/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.ls/directory/.../lesotho-south-africa</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Mozambique</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/mozambique-republic-high-commission" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../mozambique-republic-high-commission</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Namibia</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/namibia-republic-high-commission" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../namibia-republic-high-commission</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Netherlands</span><a href="https://www.netherlandsandyou.nl/web/south-africa" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">netherlandsandyou.nl/web/south-africa</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Nigeria</span><a href="https://pretoria.foreignaffairs.gov.ng/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.foreignaffairs.gov.ng</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Pakistan</span><a href="https://mofa.gov.pk/pretoria-south-africa/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">mofa.gov.pk/pretoria-south-africa</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Peru</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/peru-republic-embassy" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../peru-republic-embassy</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Qatar</span><a href="https://pretoria.embassy.qa/en" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.embassy.qa/en</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Russia</span><a href="https://russianembassyza.mid.ru/en/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">russianembassyza.mid.ru/en</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Saudi Arabia</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/saudi-arabia-kingdom-royal-embassy" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">overseas.mofa.go.kr/za-en/index.do</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">South Korea</span><a href="https://overseas.mofa.go.kr/za-en/index.do" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">overseas.mofa.go.kr/za-en/index.do</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Switzerland</span><a href="https://www.eda.admin.ch/pretoria" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">eda.admin.ch/pretoria</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Thailand</span><a href="https://pretoria.thaiembassy.org/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.thaiembassy.org</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">UAE</span><a href="https://www.mofa.gov.ae/en/missions/pretoria" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">mofa.gov.ae/en/missions/pretoria</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">UK</span><a href="https://www.gov.uk/world/organisations/british-high-commission-pretoria" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.uk/.../british-high-commission-pretoria</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">USA</span><a href="https://za.usembassy.gov/" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">za.usembassy.gov</a></li>
-                        <li class="flex flex-col sm:flex-row sm:items-center"><span class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Zimbabwe</span><a href="https://www.gov.za/about-government/contact-directory/foreign-reps/zimbabwe-republic-embassy" target="_blank" rel="noopener noreferrer" class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../zimbabwe-republic-embassy</a></li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Angola</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/angola-republic-embassy"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../angola-republic-embassy</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Argentina</span><a
+                                href="https://esafr.cancilleria.gob.ar/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">esafr.cancilleria.gob.ar</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Australia</span><a
+                                href="https://southafrica.embassy.gov.au/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">southafrica.embassy.gov.au</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Belgium</span><a
+                                href="https://southafrica.diplomatie.belgium.be/en" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">southafrica.diplomatie.belgium.be/en</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Botswana</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/botswana-republic-high-commission"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../botswana-republic-high-commission</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Brazil</span><a
+                                href="https://www.gov.br/mre/pt-br/embaixada-pretoria" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.br/mre/pt-br/embaixada-pretoria</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Canada</span><a
+                                href="https://www.international.gc.ca/country-pays/south_africa-afrique_sud/"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">international.gc.ca/.../south_africa-afrique_sud</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Chile</span><a
+                                href="https://chile.gob.cl/sudafrica/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">chile.gob.cl/sudafrica</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">China</span><a
+                                href="http://za.china-embassy.gov.cn/eng/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">za.china-embassy.gov.cn/eng</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Colombia</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/colombia-republic-embassy"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.cancilleria.gov.co</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Eswatini</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/eswatini-kingdom-high-commission"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../eswatini-kingdom-high-commission</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">France</span><a
+                                href="https://za.ambafrance.org/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">za.ambafrance.org</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Germany</span><a
+                                href="https://southafrica.diplo.de/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">southafrica.diplo.de</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Ghana</span><a
+                                href="https://pretoria.mfa.gov.gh/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.mfa.gov.gh</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">India</span><a
+                                href="https://www.hcipretoria.gov.in/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">hcipretoria.gov.in</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Italy</span><a
+                                href="https://ambpretoria.esteri.it/en/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">ambpretoria.esteri.it/en</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Japan</span><a
+                                href="https://www.za.emb-japan.go.jp/itprtop_en/index.html" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">za.emb-japan.go.jp/itprtop_en/index.html</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Kenya</span><a
+                                href="https://kenya.org.za/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">kenya.org.za</a></li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Lesotho</span><a
+                                href="https://www.gov.ls/directory/high-commission-of-the-kingdom-of-lesotho-south-africa/"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.ls/directory/.../lesotho-south-africa</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Mozambique</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/mozambique-republic-high-commission"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../mozambique-republic-high-commission</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Namibia</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/namibia-republic-high-commission"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../namibia-republic-high-commission</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Netherlands</span><a
+                                href="https://www.netherlandsandyou.nl/web/south-africa" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">netherlandsandyou.nl/web/south-africa</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Nigeria</span><a
+                                href="https://pretoria.foreignaffairs.gov.ng/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.foreignaffairs.gov.ng</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Pakistan</span><a
+                                href="https://mofa.gov.pk/pretoria-south-africa/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">mofa.gov.pk/pretoria-south-africa</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Peru</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/peru-republic-embassy"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../peru-republic-embassy</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Qatar</span><a
+                                href="https://pretoria.embassy.qa/en" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.embassy.qa/en</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Russia</span><a
+                                href="https://russianembassyza.mid.ru/en/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">russianembassyza.mid.ru/en</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Saudi Arabia</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/saudi-arabia-kingdom-royal-embassy"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">overseas.mofa.go.kr/za-en/index.do</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">South Korea</span><a
+                                href="https://overseas.mofa.go.kr/za-en/index.do" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">overseas.mofa.go.kr/za-en/index.do</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Switzerland</span><a
+                                href="https://www.eda.admin.ch/pretoria" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">eda.admin.ch/pretoria</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Thailand</span><a
+                                href="https://pretoria.thaiembassy.org/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">pretoria.thaiembassy.org</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">UAE</span><a
+                                href="https://www.mofa.gov.ae/en/missions/pretoria" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">mofa.gov.ae/en/missions/pretoria</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">UK</span><a
+                                href="https://www.gov.uk/world/organisations/british-high-commission-pretoria"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.uk/.../british-high-commission-pretoria</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">USA</span><a
+                                href="https://za.usembassy.gov/" target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">za.usembassy.gov</a>
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center"><span
+                                class="font-medium text-slate-900 dark:text-slate-100 sm:w-1/3">Zimbabwe</span><a
+                                href="https://www.gov.za/about-government/contact-directory/foreign-reps/zimbabwe-republic-embassy"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-red-600 dark:text-red-400 hover:underline break-all">gov.za/.../zimbabwe-republic-embassy</a>
+                        </li>
                     </ul>
                 </section>
             </div>
         </div>
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-12">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6">
-                <a href="../contact/" class="hover:text-white transition-colors" data-i18n-key="footerContact">Contact Us</a>
-                <a href="../privacy-policy/" class="hover:text-white transition-colors" data-i18n-key="footerPrivacy">Privacy Policy</a>
-                <a href="../terms-conditions/" class="hover:text-white transition-colors" data-i18n-key="footerTerms">Terms & Conditions</a>
+                <a href="../contact/" class="hover:text-white transition-colors" data-i18n-key="footerContact">Contact
+                    Us</a>
+                <a href="../privacy-policy/" class="hover:text-white transition-colors"
+                    data-i18n-key="footerPrivacy">Privacy Policy</a>
+                <a href="../terms-conditions/" class="hover:text-white transition-colors"
+                    data-i18n-key="footerTerms">Terms & Conditions</a>
                 <a href="./" class="hover:text-white transition-colors" data-i18n-key="footerSources">Data Sources</a>
             </div>
             <p class="text-sm" data-i18n-key="footerProductOf">A product of Skeep Technologies (Pty) Ltd.</p>
@@ -197,7 +419,7 @@
         // This combines all the necessary scripts from your main site
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
-            
+
             const themeToggleBtn = document.getElementById('theme-toggle');
             const htmlEl = document.documentElement;
 
@@ -247,13 +469,13 @@
                 function animate() {
                     const dx = mouse.x - trail.x;
                     const dy = mouse.y - trail.y;
-                    
+
                     trail.x += dx * 0.5;
                     trail.y += dy * 0.5;
-                    
+
                     targetRadius = isHovering ? 20 : 4;
                     currentRadius += (targetRadius - currentRadius) * 0.3;
-                    
+
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     const stretch = Math.min(distance / 150, 1);
@@ -285,7 +507,7 @@
             };
 
             const languageSelector = document.getElementById('language-selector');
-            
+
             for (const langCode in translations) {
                 const option = document.createElement('option');
                 option.value = langCode;
@@ -294,16 +516,21 @@
             }
 
             async function setLanguage(lang) {
-                const response = await fetch(`../translations/${lang}.json`);
-                if (!response.ok) {
-                    console.error(`Could not load translation file: ${lang}.json`);
-                    // Fallback to English if the selected language file is not found
+                let trans;
+                try {
+                    const response = await fetch(`../translations/${lang}.json`);
+                    if (!response.ok) {
+                        throw new Error(`Could not load translation file: ${lang}.json`);
+                    }
+                    trans = await response.json();
+                } catch (error) {
+                    console.error(error);
                     if (lang !== 'en') {
+                        console.log('Falling back to English');
                         setLanguage('en');
                     }
                     return;
                 }
-                const trans = await response.json();
 
                 document.querySelectorAll('[data-i18n-key]').forEach(elem => {
                     const key = elem.getAttribute('data-i18n-key');
@@ -311,7 +538,7 @@
                         elem.innerHTML = trans[key];
                     }
                 });
-                
+
                 // Also set the main page title
                 if (trans.sourcesPageTitle) {
                     document.title = trans.sourcesPageTitle;
@@ -330,5 +557,5 @@
         });
     </script>
 </body>
-</html>
 
+</html>

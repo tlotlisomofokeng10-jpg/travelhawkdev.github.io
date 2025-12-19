@@ -111,13 +111,13 @@
   "privacySection8Title": "8. 联系我们",
   "privacySection8Para1": "如果您对本隐私政策有任何疑问，请通过以下方式联系我们：<a href=\"mailto:support@TravelHawk.co.za\">support@TravelHawk.co.za</a>。",
   "contactPageTitle": "联系我们 - TravelHawk",
-    "contactTitle": "联系我们",
-    "contactSubtitle": "有问题或反馈吗？我们很乐意听取您的意见。请填写下面的表格，我们会尽快给您回复。",
-    "formName": "全名",
-    "formEmail": "电子邮件地址",
-    "formMessage": "信息",
-    "formSubmit": "发送信息",
-    "sourcesPageTitle": "信息来源 - TravelHawk",
+  "contactTitle": "联系我们",
+  "contactSubtitle": "有问题或反馈吗？我们很乐意听取您的意见。请填写下面的表格，我们会尽快给您回复。",
+  "formName": "全名",
+  "formEmail": "电子邮件地址",
+  "formMessage": "信息",
+  "formSubmit": "发送信息",
+  "sourcesPageTitle": "信息来源 - TravelHawk",
   "sourcesTitle": "信息来源",
   "sourcesIntro": "透明度和准确性是我们在TravelHawk的核心使命。本页面提供了应用程序中使用数据的官方、公开可用政府来源的完整列表。",
   "sourcesDisclaimerTitle": "重要免责声明",
@@ -125,5 +125,6 @@
   "sourcesCrimeStats": "犯罪统计",
   "sourcesEmergencyNumbers": "紧急电话",
   "sourcesEmbassies": "大使馆和领事馆信息",
-  "footerSources": "数据来源"
+  "footerSources": "数据来源",
+  "watchVideo": "观看视频"
 }
