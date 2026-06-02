@@ -7,197 +7,12 @@
     <title data-i18n-key="pageTitle">TravelHawk - Travel Smarter. Stay Safer.</title>
     <link rel="icon" type="image/png" href="../favicon.png">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Global Vanilla CSS Design System -->
+    <link rel="stylesheet" href="../global.css?v=11">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
-
-    <style>
-        /* Custom styles */
-        body {
-            font-family: 'Inter', 'Noto Sans Arabic', 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Thai', 'Noto Sans Devanagari', sans-serif;
-            background: radial-gradient(ellipse at top, #fdfdfe, #f1f5f9);
-            /* Light mode gradient */
-            transition: background 0.3s ease-in-out;
-        }
-
-        html.dark body {
-            background: radial-gradient(ellipse at top, #1e293b, #020617);
-            /* Dark mode gradient */
-        }
-
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../Gemini_Generated_Image_9z5lpj9z5lpj9z5l.png');
-            background-size: cover;
-            background-position: center 20%;
-            /* Moved the image up */
-        }
-
-        #cursor-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            /* Allows clicks to pass through */
-            z-index: 9999;
-        }
-
-        .animated-title>span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-        }
-
-        .interactive-card {
-            transition: transform 0.3s ease-out, background-color 0.3s ease;
-        }
-
-        .interactive-card:hover {
-            transform: translateY(-8px) scale(1.03);
-        }
-
-        .app-screenshot-container {
-            position: relative;
-            width: 100%;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .app-screenshot {
-            position: absolute;
-            height: 80%;
-            max-height: 500px;
-            border-radius: 1.5rem;
-            /* 24px */
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            transition: transform 0.5s ease-out;
-            border: 4px solid white;
-        }
-
-        .dark .app-screenshot {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 4px solid #334155;
-            /* slate-700 */
-        }
-
-        .app-screenshot-1 {
-            z-index: 3;
-            transform: rotate(-5deg);
-        }
-
-        .app-screenshot-2 {
-            z-index: 2;
-            transform: translateX(-40%) rotate(-15deg) scale(0.9);
-        }
-
-        .app-screenshot-3 {
-            z-index: 1;
-            transform: translateX(40%) rotate(10deg) scale(0.85);
-        }
-
-        .app-screenshot-container:hover .app-screenshot-1 {
-            transform: translateY(-10%) rotate(0deg) scale(1.05);
-        }
-
-        .app-screenshot-container:hover .app-screenshot-2 {
-            transform: translateX(-60%) rotate(-10deg) scale(0.9);
-        }
-
-        .app-screenshot-container:hover .app-screenshot-3 {
-            transform: translateX(60%) rotate(5deg) scale(0.85);
-        }
-
-        header {
-            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        /* Styles for language selector */
-        #language-selector {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-color: transparent;
-            padding-left: 2.25rem;
-            /* Space for the globe icon */
-            padding-right: 2rem;
-            /* Space for the dropdown arrow */
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-
-            /* Add two background images: globe and dropdown arrow */
-            background-image:
-                url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23475569' %3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' /%3e%3c/svg%3e"),
-                url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-
-            background-position: left 0.5rem center, right 0.5rem center;
-            background-repeat: no-repeat, no-repeat;
-            background-size: 1.25em 1.25em, 1.5em 1.5em;
-
-            border-radius: 0.5rem;
-            border: 1px solid #cbd5e1;
-            /* slate-300 */
-            transition: width 0.3s ease-in-out, color 0.3s ease-in-out;
-
-            /* Mobile styles */
-            color: transparent;
-            /* Hide text */
-            width: 56px;
-            /* A bit wider to accommodate globe icon */
-        }
-
-        /* Desktop styles */
-        @media (min-width: 768px) {
-            #language-selector {
-                color: #475569;
-                /* slate-600 */
-                width: auto;
-                padding-left: 1rem;
-                /* Restore padding */
-                /* Only show dropdown arrow on desktop */
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-                background-position: right 0.5rem center;
-                background-size: 1.5em 1.5em;
-            }
-        }
-
-        html.dark #language-selector {
-            border-color: #475569;
-            /* slate-600 */
-            /* Dark mode icons */
-            background-image:
-                url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%2394a3b8' %3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' /%3e%3c/svg%3e"),
-                url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-        }
-
-        /* Desktop dark mode styles */
-        @media (min-width: 768px) {
-            html.dark #language-selector {
-                color: #d1d5db;
-                /* slate-300 */
-                /* Only show dropdown arrow on desktop */
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            }
-        }
-    </style>
     <script>
         // Set theme on initial load
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -208,105 +23,70 @@
     </script>
 </head>
 
-<body class="text-slate-700 dark:text-slate-300">
+<body>
 
     <canvas id="cursor-canvas"></canvas>
 
     <!-- Header & Navigation -->
-    <header
-        class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-200 dark:border-slate-800">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header id="site-header">
+        <div class="container flex justify-between items-center py-4">
             <a href="../" class="flex items-center space-x-2">
                 <img src="../Untitled%20design%20(9).png" alt="TravelHawk Logo" class="w-10 h-10">
                 <span class="text-2xl font-bold text-slate-800 dark:text-white">TravelHawk</span>
             </a>
-            <div class="flex items-center space-x-2 md:space-x-4">
+            <div class="flex items-center space-x-4">
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#home"
-                        class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
-                        data-i18n-key="navHome">Home</a>
-                    <a href="#features"
-                        class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
-                        data-i18n-key="navFeatures">Features</a>
-                    <a href="#testimonials"
-                        class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
-                        data-i18n-key="navTestimonials">Testimonials</a>
-                    <a href="#about"
-                        class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
-                        data-i18n-key="navAbout">About</a>
-                    <a href="../contact/"
-                        class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
-                        data-i18n-key="navContact">Contact</a>
+                    <a href="#home" class="nav-link" data-i18n-key="navHome">Home</a>
+                    <a href="#demo" class="nav-link" data-i18n-key="navDemo">Safety Planner</a>
+                    <a href="#features" class="nav-link" data-i18n-key="navFeatures">Features</a>
+                    <a href="#testimonials" class="nav-link" data-i18n-key="navTestimonials">Testimonials</a>
+                    <a href="#about" class="nav-link" data-i18n-key="navAbout">About</a>
+                    <a href="../contact/" class="nav-link" data-i18n-key="navContact">Contact</a>
                 </nav>
-                <a href="#download"
-                    class="hidden md:inline-block bg-red-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-700 magnetic-button">
-                    <span class="magnetic-content inline-block transition-transform duration-200 ease-out"
-                        data-i18n-key="downloadApp">Download App</span>
+                <a href="#download" class="hidden md:inline-block btn-primary magnetic-button">
+                    <span class="magnetic-content" data-i18n-key="downloadApp">Download App</span>
                 </a>
                 <!-- Language Selector -->
                 <div class="relative">
-                    <select id="language-selector" class="bg-transparent dark:bg-slate-900/80"></select>
+                    <select id="language-selector"></select>
                 </div>
-                <button id="theme-toggle"
-                    class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                <button id="theme-toggle" class="nav-link">
                     <i data-lucide="sun" class="w-6 h-6 hidden dark:inline"></i>
                     <i data-lucide="moon" class="w-6 h-6 dark:hidden"></i>
                 </button>
-                <button id="mobile-menu-btn" class="md:hidden text-slate-800 dark:text-white">
+                <button id="mobile-menu-btn" class="nav-link md:hidden">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm">
-            <a href="#home"
-                class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500"
-                data-i18n-key="navHome">Home</a>
-            <a href="#features"
-                class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500"
-                data-i18n-key="navFeatures">Features</a>
-            <a href="#testimonials"
-                class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500"
-                data-i18n-key="navTestimonials">Testimonials</a>
-            <a href="#about"
-                class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500"
-                data-i18n-key="navAbout">About</a>
-            <a href="../contact/"
-                class="block py-2 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500"
-                data-i18n-key="navContact">Contact</a>
-            <a href="#download"
-                class="block mt-4 w-full text-center bg-red-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-700"
-                data-i18n-key="downloadApp">Download App</a>
+        <div id="mobile-menu">
+            <a href="#home" data-i18n-key="navHome">Home</a>
+            <a href="#demo" data-i18n-key="navDemo">Safety Planner</a>
+            <a href="#features" data-i18n-key="navFeatures">Features</a>
+            <a href="#testimonials" data-i18n-key="navTestimonials">Testimonials</a>
+            <a href="#about" data-i18n-key="navAbout">About</a>
+            <a href="../contact/" data-i18n-key="navContact">Contact</a>
+            <a href="#download" class="btn-primary text-center mt-4" data-i18n-key="downloadApp">Download App</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
-            <div class="container mx-auto px-6 text-center text-white">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight" data-i18n-key="heroTitle">Travel Smarter.
-                    Stay Safer.</h1>
-                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-slate-200" data-i18n-key="heroSubtitle">Your
-                    personal safety companion for exploring South Africa. Get real-time crime statistics and verified
-                    safety alerts right on your phone.</p>
+        <section id="home" class="hero-bg">
+            <div class="container text-center text-white">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight hero-title" data-i18n-key="heroTitle">Travel Smarter. Stay Safer.</h1>
+                <p class="hero-subtitle" data-i18n-key="heroSubtitle">Your personal safety companion for exploring South Africa. Get real-time crime statistics, smart safe routing, and verified voice alerts right on your phone.</p>
                 <div class="mt-8 flex flex-wrap justify-center items-center gap-4">
-                    <button id="watch-video-btn"
-                        class="group flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 py-3.5 rounded-xl transition-all duration-300 hover:scale-105">
-                        <div class="bg-red-600 rounded-full p-1 group-hover:bg-red-500 transition-colors">
-                            <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
-                        </div>
-                        <span class="font-semibold" data-i18n-key="watchVideo">Watch Video</span>
-                    </button>
-                    <a href="https://apps.apple.com/za/app/crimehawk/id6584519575" target="_blank"
-                        rel="noopener noreferrer" class="magnetic-button">
-                        <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
-                            <img src="../app-store-badge.svg" alt="Download on the App Store" class="h-14">
+
+                    <a href="https://apps.apple.com/za/app/crimehawk/id6584519575" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                        <span class="magnetic-content">
+                            <img src="../app-store-badge.svg" alt="Download on the App Store" class="store-badge">
                         </span>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.skeeptechnologies.crimehawk"
-                        target="_blank" rel="noopener noreferrer" class="magnetic-button">
-                        <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
-                            <img src="../google-play-badge.png" alt="Get it on Google Play" class="h-[76px]">
+                    <a href="https://play.google.com/store/apps/details?id=com.skeeptechnologies.crimehawk" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                        <span class="magnetic-content">
+                            <img src="../google-play-badge-new.svg" alt="Get it on Google Play" class="store-badge">
                         </span>
                     </a>
                 </div>
@@ -314,252 +94,473 @@
         </section>
 
         <!-- How It Works Section -->
-        <section id="how-it-works" class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title"
-                    data-i18n-key="getStartedTitle">Get Started in 3 Easy Steps</h2>
-                <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                    style="transition-delay: 100ms;" data-i18n-key="getStartedSubtitle">Safety and awareness are just a
-                    few taps away.</p>
+        <section id="how-it-works" class="py-32">
+            <div class="container">
+                <h2 class="section-title scroll-animate animated-title" data-i18n-key="getStartedTitle">Get Started in 3 Easy Steps</h2>
+                <p class="section-subtitle scroll-animate" data-i18n-key="getStartedSubtitle">Safety and awareness are just a few taps away.</p>
                 <div class="mt-12 grid md:grid-cols-3 gap-10">
-                    <div class="text-center scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                        style="transition-delay: 200ms;">
-                        <div
-                            class="bg-red-100 dark:bg-slate-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto">
-                            <i data-lucide="download" class="w-10 h-10 text-red-600 dark:text-red-500"></i>
+                    <div class="text-center scroll-animate">
+                        <div class="bg-color-2 rounded-full w-20 h-20 flex items-center justify-center mx-auto border">
+                            <i data-lucide="download" class="w-10 h-10 text-red-600"></i>
                         </div>
-                        <h3 class="mt-6 text-xl font-bold text-slate-800 dark:text-white" data-i18n-key="step1Title">1.
-                            Download the App</h3>
-                        <p class="mt-2 text-slate-600 dark:text-slate-400" data-i18n-key="step1Text">Available for free
-                            on both iOS and Android devices.</p>
+                        <h3 class="mt-6 text-xl font-bold" data-i18n-key="step1Title">1. Download the App</h3>
+                        <p class="mt-2 text-slate-400" data-i18n-key="step1Text">Available for free on both iOS and Android devices.</p>
                     </div>
-                    <div class="text-center scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                        style="transition-delay: 300ms;">
-                        <div
-                            class="bg-red-100 dark:bg-slate-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto">
-                            <i data-lucide="map-pin" class="w-10 h-10 text-red-600 dark:text-red-500"></i>
+                    <div class="text-center scroll-animate">
+                        <div class="bg-color-2 rounded-full w-20 h-20 flex items-center justify-center mx-auto border">
+                            <i data-lucide="map-pin" class="w-10 h-10 text-red-600"></i>
                         </div>
-                        <h3 class="mt-6 text-xl font-bold text-slate-800 dark:text-white" data-i18n-key="step2Title">2.
-                            Enable Location</h3>
-                        <p class="mt-2 text-slate-600 dark:text-slate-400" data-i18n-key="step2Text">Allow location
-                            services for automatic, real-time alerts as you move.</p>
+                        <h3 class="mt-6 text-xl font-bold" data-i18n-key="step2Title">2. Enable Location</h3>
+                        <p class="mt-2 text-slate-400" data-i18n-key="step2Text">Allow location services for automatic, real-time alerts as you move.</p>
                     </div>
-                    <div class="text-center scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                        style="transition-delay: 400ms;">
-                        <div
-                            class="bg-red-100 dark:bg-slate-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto">
-                            <i data-lucide="shield-alert" class="w-10 h-10 text-red-600 dark:text-red-500"></i>
+                    <div class="text-center scroll-animate">
+                        <div class="bg-color-2 rounded-full w-20 h-20 flex items-center justify-center mx-auto border">
+                            <i data-lucide="shield-alert" class="w-10 h-10 text-red-600"></i>
                         </div>
-                        <h3 class="mt-6 text-xl font-bold text-slate-800 dark:text-white" data-i18n-key="step3Title">3.
-                            Receive Alerts</h3>
-                        <p class="mt-2 text-slate-600 dark:text-slate-400" data-i18n-key="step3Text">Get notified about
-                            crime hotspots and incident reports in your area.</p>
+                        <h3 class="mt-6 text-xl font-bold" data-i18n-key="step3Title">3. Receive Alerts</h3>
+                        <p class="mt-2 text-slate-400" data-i18n-key="step3Text">Get notified about crime hotspots, safe navigation directions, and spiking zones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Route Safety Planner Demo Section -->
+        <section id="demo" class="py-32 bg-white dark:bg-slate-900 border">
+            <div class="container">
+                <h2 class="section-title scroll-animate animated-title" data-i18n-key="demoSectionTitle">Interactive Safety Routing</h2>
+                <p class="section-subtitle scroll-animate" data-i18n-key="demoSectionSubtitle">Experience the difference. Toggle below to compare a standard route with a TravelHawk safety-first route.</p>
+                
+                <div class="mt-12 route-demo-container scroll-animate">
+                    <!-- Left: Control & Details -->
+                    <div class="flex flex-col space-y-6">
+                        <div class="interactive-card">
+                            <h3 class="text-xl font-bold mb-4" data-i18n-key="demoControlTitle">Compare Routes</h3>
+                            <p class="text-sm text-slate-400 mb-6" data-i18n-key="demoControlDesc">Select a routing engine to see how TravelHawk actively reroutes you away from criminal activities, blue light syndicates, and spiking hazards.</p>
+                            
+                            <div class="flex gap-4">
+                                <button id="btn-standard-route" class="btn-primary w-full text-center" style="background-color: var(--text-muted); box-shadow: none;" data-i18n-key="standardEngine">Standard GPS</button>
+                                <button id="btn-safe-route" class="btn-primary w-full text-center" data-i18n-key="safeEngine">TravelHawk Safety Engine</button>
+                            </div>
+                        </div>
+
+                        <!-- Info details card -->
+                        <div class="interactive-card" id="demo-details-card">
+                            <h4 class="text-lg font-bold mb-2" id="demo-details-title" data-i18n-key="selectRouteLabel">Select a Route above</h4>
+                            <p class="text-sm text-slate-400 mb-4" id="demo-details-subtitle">Click Standard GPS or TravelHawk Safety Engine to simulate calculations.</p>
+                            <div class="score-bar"><div class="score-bar-fill" id="demo-score-fill"></div></div>
+                            <div class="route-details-list" id="demo-details-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Mobile Device Simulation -->
+                    <div class="route-planner-device">
+                        <div class="device-notch"></div>
+                        <div class="device-screen">
+                            <div class="device-ui-overlay">
+                                <div class="device-search-bar">
+                                    <div class="search-input-group">
+                                        <div class="search-dot start"></div>
+                                        <div class="search-text">My Location (Cape Town CBD)</div>
+                                    </div>
+                                    <div class="search-input-group" style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 0.25rem;">
+                                        <div class="search-dot end"></div>
+                                        <div class="search-text">Cape Town International Airport</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="device-map-container">
+                                <!-- SVG map simulation (Light Mapbox style) -->
+                                <svg class="svg-map" viewBox="0 -50 300 450">
+                                    <!-- River -->
+                                    <path d="M -20, 280 Q 100, 320 150, 280 T 320, 280" fill="none" stroke="#aadaff" stroke-width="25" stroke-linecap="round"/>
+
+                                    <!-- Parks -->
+                                    <path d="M 0,0 L 80,0 L 80,30 Q 40,30 0,60 Z" fill="#cde6c5"/>
+                                    <path d="M 180,60 L 280,60 L 280,120 Q 230,120 180,90 Z" fill="#cde6c5"/>
+                                    <path d="M 60,380 L 160,380 L 160,450 L 60,450 Z" fill="#cde6c5" stroke-linejoin="round"/>
+
+                                    <!-- Minor Grid Roads -->
+                                    <path d="M 20,0 L 20,450 M 60,0 L 60,450 M 100,0 L 100,450 M 120,0 L 120,450 M 160,0 L 160,450 M 180,0 L 180,450 M 200,0 L 200,450 M 220,0 L 220,450 M 260,0 L 260,450 M 280,0 L 280,450" stroke="#ffffff" stroke-width="2"/>
+                                    <path d="M 0,20 L 300,20 M 0,60 L 300,60 M 0,100 L 300,100 M 0,120 L 300,120 M 0,160 L 300,160 M 0,180 L 300,180 M 0,200 L 300,200 M 0,220 L 300,220 M 0,260 L 300,260 M 0,280 L 300,280 M 0,300 L 300,300 M 0,320 L 300,320 M 0,360 L 300,360 M 0,380 L 300,380 M 0,400 L 300,400 M 0,420 L 300,420" stroke="#ffffff" stroke-width="2"/>
+
+                                    <!-- Major Roads Shadows/Outlines -->
+                                    <g stroke="#d1d5db" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                        <path d="M 40,0 L 40,450" />
+                                        <path d="M 140,0 L 140,450" />
+                                        <path d="M 240,0 L 240,450" />
+                                        <path d="M 0,40 L 300,40" />
+                                        <path d="M 0,140 L 300,140" />
+                                        <path d="M 0,240 L 300,240" />
+                                        <path d="M 0,340 L 300,340" />
+                                    </g>
+
+                                    <!-- Major Roads Fills -->
+                                    <g stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                        <path d="M 40,0 L 40,450" />
+                                        <path d="M 140,0 L 140,450" />
+                                        <path d="M 240,0 L 240,450" />
+                                        <path d="M 0,40 L 300,40" />
+                                        <path d="M 0,140 L 300,140" />
+                                        <path d="M 0,240 L 300,240" />
+                                        <path d="M 0,340 L 300,340" />
+                                    </g>
+
+                                    <!-- Danger Hotspots -->
+                                    <g transform="translate(140,140)">
+                                        <circle cx="0" cy="0" r="14" class="hotspot-bg" />
+                                        <path d="M-6,2 Q0,-4 6,2" stroke="#f97316" stroke-width="2" fill="none"/>
+                                        <circle cx="-3" cy="-1" r="1.5" fill="#f97316"/>
+                                        <circle cx="3" cy="-1" r="1.5" fill="#f97316"/>
+                                    </g>
+                                    <g transform="translate(140,240)">
+                                        <circle cx="0" cy="0" r="14" class="hotspot-bg" />
+                                        <path d="M-6,2 Q0,-4 6,2" stroke="#f97316" stroke-width="2" fill="none"/>
+                                        <circle cx="-3" cy="-1" r="1.5" fill="#f97316"/>
+                                        <circle cx="3" cy="-1" r="1.5" fill="#f97316"/>
+                                    </g>
+                                    <g transform="translate(240,240)">
+                                        <circle cx="0" cy="0" r="14" class="hotspot-bg" />
+                                        <path d="M-6,2 Q0,-4 6,2" stroke="#f97316" stroke-width="2" fill="none"/>
+                                        <circle cx="-3" cy="-1" r="1.5" fill="#f97316"/>
+                                        <circle cx="3" cy="-1" r="1.5" fill="#f97316"/>
+                                    </g>
+
+                                    <!-- Dangerous Path (exactly traces Major Roads) -->
+                                    <path id="danger-route" d="M 40,40 L 140,40 L 140,240 L 240,240 L 240,340" class="map-route-line" stroke="#ef4444" stroke-linejoin="round" stroke-linecap="round" />
+                                    
+                                    <!-- Safe Path (exactly traces Major Roads) -->
+                                    <path id="safe-route" d="M 40,40 L 40,340 L 240,340" class="map-route-line active" stroke="#22c55e" stroke-linejoin="round" stroke-linecap="round" />
+                                    
+                                    <!-- Pins -->
+                                    <!-- Start pin -->
+                                    <g transform="translate(40,40)">
+                                        <g class="map-pin">
+                                            <!-- Outer pulse -->
+                                            <circle cx="0" cy="0" r="16" fill="#3b82f6" opacity="0.2" />
+                                            <!-- White border -->
+                                            <circle cx="0" cy="0" r="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" />
+                                            <!-- Inner dot -->
+                                            <circle cx="0" cy="0" r="5" fill="#3b82f6" />
+                                        </g>
+                                    </g>
+                                    
+                                    <g class="map-pin-label" transform="translate(40,15)">
+                                        <rect x="-25" y="-12" width="50" height="20" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                                        <text x="0" y="2" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">Start</text>
+                                    </g>
+
+                                    <!-- End pin -->
+                                    <g transform="translate(240,340)">
+                                        <g class="map-pin">
+                                            <!-- Drop shadow -->
+                                            <ellipse cx="0" cy="2" rx="7" ry="3" fill="rgba(0,0,0,0.2)" />
+                                            <!-- Red teardrop -->
+                                            <path d="M0,0 C-12,-12 -16,-24 0,-40 C16,-24 12,-12 0,0 Z" fill="#ef4444" />
+                                            <!-- White center -->
+                                            <circle cx="0" cy="-24" r="6" fill="white" />
+                                            <!-- Inner dot -->
+                                            <circle cx="0" cy="-24" r="2.5" fill="#ef4444" />
+                                        </g>
+                                    </g>
+
+                                    <g class="map-pin-label" transform="translate(240,290)">
+                                        <rect x="-35" y="-12" width="70" height="20" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                                        <text x="0" y="2" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">Airport</text>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="device-bottom-card" id="device-card">
+                                <div class="route-score-meter">
+                                    <span class="text-sm font-semibold" data-i18n-key="routeSafetyScore">Route Safety Score</span>
+                                    <span class="score-value" id="demo-score-val">-</span>
+                                </div>
+                                <div class="score-bar"><div class="score-bar-fill" id="device-score-fill"></div></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice Alerts Sound Demo Container -->
+                <div class="voice-demo-card scroll-animate">
+                    <h3 class="text-2xl font-bold text-center" data-i18n-key="voiceAlertsDemoTitle">Hear the Hawk in Action</h3>
+                    <p class="text-sm text-slate-400 text-center mt-2 max-w-lg mx-auto" data-i18n-key="voiceAlertsDemoSubtitle">TravelHawk guides you in real-time. Listen to simulated safety announcements triggered during navigation.</p>
+                    
+                    <div class="wave-container" id="visualizer-wave">
+                        <!-- 30 audio wave bars -->
+                        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                    </div>
+
+                    <div class="voice-list">
+                        <div class="voice-item">
+                            <div class="voice-item-info">
+                                <span class="voice-item-title" data-i18n-key="voiceSpikeTitle">Vehicle Spiking Warning</span>
+                                <span class="voice-item-desc" data-i18n-key="voiceSpikeDesc">Alert triggers approaching high-risk highways</span>
+                            </div>
+                            <button class="voice-play-btn" data-voice-key="spiking_alert" aria-label="Play Spiking Warning">
+                                <i data-lucide="play" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <div class="voice-item">
+                            <div class="voice-item-info">
+                                <span class="voice-item-title" data-i18n-key="voicePrecinctTitle">Precinct Entry Assessment</span>
+                                <span class="voice-item-desc" data-i18n-key="voicePrecinctDesc">Announces localized risk values for police precincts</span>
+                            </div>
+                            <button class="voice-play-btn" data-voice-key="precinct_alert" aria-label="Play Precinct Warning">
+                                <i data-lucide="play" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <div class="voice-item">
+                            <div class="voice-item-info">
+                                <span class="voice-item-title" data-i18n-key="voiceHijackingTitle">Hijacking Hotspot Alert</span>
+                                <span class="voice-item-desc" data-i18n-key="voiceHijackingDesc">Warns of known active hijacking zones ahead</span>
+                            </div>
+                            <button class="voice-play-btn" data-voice-key="hijacking_alert" aria-label="Play Hijacking Warning">
+                                <i data-lucide="play" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <div class="voice-item">
+                            <div class="voice-item-info">
+                                <span class="voice-item-title" data-i18n-key="voiceNavigationIntroTitle">Navigation Starting Voice</span>
+                                <span class="voice-item-desc" data-i18n-key="voiceNavigationIntroDesc">Greeting spoken as Mapbox routing initiates</span>
+                            </div>
+                            <button class="voice-play-btn" data-voice-key="intro_alert" aria-label="Play Navigation Intro">
+                                <i data-lucide="play" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-World Routing Section -->
+        <section id="real-world-routing" class="py-32 bg-white dark:bg-slate-900 border-t">
+            <div class="container">
+                <h2 class="section-title scroll-animate animated-title text-center" data-i18n-key="routingRealWorldTitle">Routing in the Wild</h2>
+                <p class="section-subtitle scroll-animate text-center mb-16" data-i18n-key="routingRealWorldSubtitle">See how the TravelHawk navigation system guides you safely through real street-level scenarios.</p>
+                
+                <div class="showcase-grid">
+                    <!-- Feature 1: Video -->
+                    <div class="showcase-item scroll-animate">
+                        <div class="showcase-device">
+                            <video src="../screenshots/e06a04ad-32db-43c0-9b20-84feef832faf.MP4" controls playsinline class="w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700"></video>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="routingVideoTitle">Dynamic Rerouting</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="routingVideoText">Watch the navigation engine instantly recalculate your path the moment a new threat is reported on your current trajectory.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: Screenshot 1 -->
+                    <div class="showcase-item reverse scroll-animate">
+                        <div class="showcase-device">
+                            <div class="route-planner-device showcase-device-override">
+                                <div class="device-notch"></div>
+                                <div class="device-screen">
+                                    <img src="../screenshots/IMG_2344.PNG" alt="Safe Route Analysis" class="showcase-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="routingScreenshot1Title">Active Threat Detection</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="routingScreenshot1Text">The engine continuously scans your route for spikes, hijack zones, and localized crime, ensuring your path is physically secure.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Screenshot 2 -->
+                    <div class="showcase-item scroll-animate">
+                        <div class="showcase-device">
+                            <div class="route-planner-device showcase-device-override">
+                                <div class="device-notch"></div>
+                                <div class="device-screen">
+                                    <img src="../screenshots/IMG_2380%203.PNG" alt="Detailed Navigation" class="showcase-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="routingScreenshot2Title">Turn-by-Turn Safety</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="routingScreenshot2Text">Powered by Mapbox, you get reliable, industry-leading navigation instructions augmented with our proprietary safety data layers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4: Screenshot 3 -->
+                    <div class="showcase-item reverse scroll-animate">
+                        <div class="showcase-device">
+                            <div class="route-planner-device showcase-device-override">
+                                <div class="device-notch"></div>
+                                <div class="device-screen">
+                                    <img src="../screenshots/IMG_2381%202.PNG" alt="Alternative Safe Routes" class="showcase-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="routingScreenshot3Title">Smart Alternatives</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="routingScreenshot3Text">Always have a choice. TravelHawk presents you with the fastest route alongside the statistically safest alternatives for your journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inside the App Section -->
+        <section id="app-showcase" class="py-32 bg-slate-50 dark:bg-slate-800">
+            <div class="container">
+                <h2 class="section-title scroll-animate animated-title text-center" data-i18n-key="showcaseTitle">Inside the Hawk</h2>
+                <p class="section-subtitle scroll-animate text-center mb-16" data-i18n-key="showcaseSubtitle">Experience the comprehensive safety tools designed to keep you secure on every journey.</p>
+                
+                <div class="showcase-grid">
+                    <!-- Feature 1: Dashcam Alerts -->
+                    <div class="showcase-item scroll-animate">
+                        <div class="showcase-device">
+                            <div class="route-planner-device showcase-device-override">
+                                <div class="device-notch"></div>
+                                <div class="device-screen">
+                                    <img src="../screenshots/IMG_2260.PNG" alt="Dashcam Alert" class="showcase-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="showcase1Title">Incident Alerts</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="showcase1Text">Stay informed with instant push notifications and dashcam footage of localized incidents, empowering you to avoid developing hotspots and traffic hazards.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: National Heatmaps -->
+                    <div class="showcase-item reverse scroll-animate">
+                        <div class="showcase-device">
+                            <div class="route-planner-device showcase-device-override">
+                                <div class="device-notch"></div>
+                                <div class="device-screen">
+                                    <img src="../screenshots/IMG_2384.PNG" alt="National Heatmaps" class="showcase-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="showcase2Title">National Risk Assessment</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="showcase2Text">Visualize safety statistics across all 1,162 police precincts nationwide. Plan your inter-provincial road trips and holidays with unparalleled confidence.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Hyper-Local Zones -->
+                    <div class="showcase-item scroll-animate">
+                        <div class="showcase-device">
+                            <div class="route-planner-device showcase-device-override">
+                                <div class="device-notch"></div>
+                                <div class="device-screen">
+                                    <img src="../screenshots/IMG_2375.PNG" alt="Hyper-Local Zones" class="showcase-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="showcase3Title">Hyper-Local Safety Zones</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="showcase3Text">Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4: Curated Safe Tourism -->
+                    <div class="showcase-item reverse scroll-animate">
+                        <div class="showcase-device">
+                            <div class="route-planner-device showcase-device-override">
+                                <div class="device-notch"></div>
+                                <div class="device-screen">
+                                    <img src="../screenshots/IMG_2385.PNG" alt="Curated Safe Tourism" class="showcase-img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="text-2xl font-bold mb-4" data-i18n-key="showcase4Title">Curated Safe Tourism</h3>
+                            <p class="text-slate-600 dark:text-slate-300" data-i18n-key="showcase4Text">Discover vetted, safe tourist attractions like the Franschhoek Wine Tram. Enjoy your holiday knowing you're visiting secure, highly-rated locations.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Features Section -->
-        <section id="features" class="py-20 bg-white dark:bg-slate-900">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title"
-                    data-i18n-key="featuresTitle">Know Before You Go</h2>
-                <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                    style="transition-delay: 100ms;" data-i18n-key="featuresSubtitle">TravelHawk equips you with the
-                    tools you need to make informed decisions and explore with confidence.</p>
-                <div class="mt-16 grid md:grid-cols-2 gap-16 items-center">
-                    <div class="relative scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out app-screenshot-container"
-                        style="transition-delay: 200ms;">
-                        <!-- App Screenshots -->
-                        <img src="../IMG_0961.PNG"
-                            alt="TravelHawk app displaying detailed crime statistics for a precinct"
-                            class="app-screenshot app-screenshot-2">
-                        <img src="../IMG_0960.PNG" alt="TravelHawk app showing a color-coded safety map of Cape Town"
-                            class="app-screenshot app-screenshot-1">
-                        <img src="../IMG_0962.PNG" alt="TravelHawk app showing a real-time community safety alert"
-                            class="app-screenshot app-screenshot-3">
-                    </div>
-                    <div class="space-y-10 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                        style="transition-delay: 300ms;">
-                        <div class="flex items-start space-x-4">
-                            <div><i data-lucide="radio-tower" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800 dark:text-white"
-                                    data-i18n-key="feature1Title">Hawk Mode</h3>
-                                <p class="mt-1 text-slate-600 dark:text-slate-400" data-i18n-key="feature1Text">Receive
-                                    automatic, precinct-based safety alerts as you travel, without having to do a thing.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div><i data-lucide="check-check" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800 dark:text-white"
-                                    data-i18n-key="feature2Title">Verified Incident Reports</h3>
-                                <p class="mt-1 text-slate-600 dark:text-slate-400" data-i18n-key="feature2Text">Stay
-                                    informed with up-to-the-minute incident reports curated and verified by the
-                                    TravelHawk team.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div><i data-lucide="database" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800 dark:text-white"
-                                    data-i18n-key="feature3Title">Official SAPS Statistics</h3>
-                                <p class="mt-1 text-slate-600 dark:text-slate-400" data-i18n-key="feature3Text">Access
-                                    user-friendly, visualized crime data from all 1,162 police precincts.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div><i data-lucide="siren" class="w-10 h-10 text-red-600 dark:text-red-500 mb-4"></i></div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800 dark:text-white"
-                                    data-i18n-key="feature4Title">Spiking Hotspot Alerts</h3>
-                                <p class="mt-1 text-slate-600 dark:text-slate-400" data-i18n-key="feature4Text">Receive
-                                    timely warnings about roads and areas reported for vehicle spiking and other
-                                    dangers.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- As Recommended By Section -->
-        <section id="recommended" class="py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title"
-                    data-i18n-key="recommendedTitle">As Recommended By</h2>
+        <section id="recommended" class="py-32">
+            <div class="container text-center">
+                <h2 class="section-title scroll-animate animated-title" data-i18n-key="recommendedTitle">As Recommended By</h2>
                 <div class="mt-12 flex justify-center items-center">
-                    <a href="https://www.auswaertiges-amt.de/de/reiseundsicherheit/suedafrikasicherheit-208400#content_3"
-                        target="_blank" rel="noopener noreferrer"
-                        class="scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                        style="transition-delay: 200ms;">
-                        <div
-                            class="flex flex-col items-center space-y-4 opacity-80 hover:opacity-100 transition-opacity">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Coat_of_arms_of_Germany.svg/100px-Coat_of_arms_of_Germany.svg.png"
-                                alt="German Federal Foreign Office Logo" class="h-24 dark:invert">
-                            <p class="text-slate-600 dark:text-slate-400 font-semibold" data-i18n-key="recommendedBy">
-                                German Federal Foreign Office</p>
-                        </div>
+                    <a href="https://www.auswaertiges-amt.de/de/reiseundsicherheit/suedafrikasicherheit-208400#content_3" target="_blank" rel="noopener noreferrer" class="scroll-animate recommended-box">
+                        <img src="../german_logo.svg" alt="German Federal Foreign Office Logo" class="h-24 dark:invert">
+                        <p class="text-slate-400 font-semibold" data-i18n-key="recommendedBy">German Federal Foreign Office</p>
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="py-20 bg-white dark:bg-slate-900">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title"
-                    data-i18n-key="testimonialsTitle">Trusted by Travellers</h2>
-                <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                    style="transition-delay: 100ms;" data-i18n-key="testimonialsSubtitle">Here's what our users are
-                    saying about peace of mind on their journeys.</p>
+        <section id="testimonials" class="py-32 bg-white dark:bg-slate-900 border-t border-b">
+            <div class="container">
+                <h2 class="section-title scroll-animate animated-title" data-i18n-key="testimonialsTitle">Trusted by Travellers</h2>
+                <p class="section-subtitle scroll-animate" data-i18n-key="testimonialsSubtitle">Here's what our users are saying about peace of mind on their journeys.</p>
                 <div class="mt-12 grid md:grid-cols-3 gap-8">
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg dark:shadow-black/20 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out interactive-card dark:hover:bg-slate-700"
-                        style="transition-delay: 200ms;">
+                    <div class="interactive-card scroll-animate">
                         <div class="flex items-center mb-4">
                             <img src="../jenna.png" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
                             <div>
-                                <p class="font-bold text-slate-800 dark:text-white" data-i18n-key="testimonial1Name">
-                                    Jenna S.</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n-key="testimonial1Role">
-                                    Cape Town Visitor</p>
+                                <p class="font-bold text-slate-800 dark:text-white" data-i18n-key="testimonial1Name">Jenna S.</p>
+                                <p class="text-sm text-slate-400" data-i18n-key="testimonial1Role">Cape Town Visitor</p>
                             </div>
                         </div>
-                        <p class="text-slate-600 dark:text-slate-300" data-i18n-key="testimonial1Text">"As a solo
-                            traveler, TravelHawk was a game-changer. I felt so much more aware of my surroundings and
-                            could plan my days with confidence. A must-have app!"</p>
+                        <p class="text-slate-400" data-i18n-key="testimonial1Text">"As a solo traveler, TravelHawk was a game-changer. I felt so much more aware of my surroundings and could plan my days with confidence. A must-have app!"</p>
                     </div>
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg dark:shadow-black/20 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out interactive-card dark:hover:bg-slate-700"
-                        style="transition-delay: 300ms;">
+                    <div class="interactive-card scroll-animate">
                         <div class="flex items-center mb-4">
                             <img src="../mark.png" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
                             <div>
-                                <p class="font-bold text-slate-800 dark:text-white" data-i18n-key="testimonial2Name">
-                                    Mark K.</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n-key="testimonial2Role">
-                                    Business Traveller</p>
+                                <p class="font-bold text-slate-800 dark:text-white" data-i18n-key="testimonial2Name">Mark K.</p>
+                                <p class="text-sm text-slate-400" data-i18n-key="testimonial2Role">Business Traveller</p>
                             </div>
                         </div>
-                        <p class="text-slate-600 dark:text-slate-300" data-i18n-key="testimonial2Text">"I travel to
-                            Johannesburg often for work. This app helps me understand the security landscape of
-                            different neighborhoods, which is incredibly valuable."</p>
+                        <p class="text-slate-400" data-i18n-key="testimonial2Text">"I travel to Johannesburg often for work. This app helps me understand the security landscape of different neighborhoods, which is incredibly valuable."</p>
                     </div>
-                    <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg dark:shadow-black/20 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out interactive-card dark:hover:bg-slate-700"
-                        style="transition-delay: 400ms;">
+                    <div class="interactive-card scroll-animate">
                         <div class="flex items-center mb-4">
-                            <img src="../Kwanele.jpeg" alt="User Avatar"
-                                class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <img src="../Kwanele.jpeg" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 object-cover">
                             <div>
-                                <p class="font-bold text-slate-800 dark:text-white" data-i18n-key="testimonial3Name">
-                                    Kwanele M.</p>
-                                <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n-key="testimonial3Role">
-                                    Local Explorer</p>
+                                <p class="font-bold text-slate-800 dark:text-white" data-i18n-key="testimonial3Name">Kwanele M.</p>
+                                <p class="text-sm text-slate-400" data-i18n-key="testimonial3Role">Local Explorer</p>
                             </div>
                         </div>
-                        <p class="text-slate-600 dark:text-slate-300" data-i18n-key="testimonial3Text">"Even as a local,
-                            I've discovered so much about my own city. The incident reports are fantastic for knowing
-                            what's happening around me."</p>
+                        <p class="text-slate-400" data-i18n-key="testimonial3Text">"Even as a local, I've discovered so much about my own city. The incident reports are fantastic for knowing what's happening around me."</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- About Us Section -->
-        <section id="about" class="py-20 bg-white dark:bg-slate-900">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out animated-title"
-                    data-i18n-key="missionTitle">Our Mission</h2>
-                <p class="section-subtitle scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                    style="transition-delay: 100ms;" data-i18n-key="missionText">We believe that everyone has the right
-                    to feel safe and informed while exploring the beauty of South Africa. TravelHawk was born from a
-                    desire to empower travellers and residents with transparent, accessible, and real-time safety
-                    information. We're dedicated to building a community that looks out for one another, one alert at a
-                    time.</p>
-                <div class="mt-12 inline-flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-12 scroll-animate opacity-0 translate-y-5 transition-all duration-700 ease-out"
-                    style="transition-delay: 200ms;">
-                    <div class="flex flex-col items-center">
-                        <img src="../ID%20Document.pdf%20(19).png" alt="Mohau Mofokeng"
-                            class="w-32 h-32 rounded-full shadow-lg object-cover">
-                        <h4 class="mt-4 text-xl font-bold text-slate-800 dark:text-white" data-i18n-key="founder1Name">
-                            Mohau Mofokeng</h4>
-                        <p class="text-red-600 dark:text-red-500 font-semibold" data-i18n-key="founderRole">Co-Founder
-                        </p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <img src="../ID%20Document.pdf%20(18)%20(1).png" alt="Tlotliso Mofokeng"
-                            class="w-32 h-32 rounded-full shadow-lg object-cover">
-                        <h4 class="mt-4 text-xl font-bold text-slate-800 dark:text-white" data-i18n-key="founder2Name">
-                            Tlotliso Mofokeng</h4>
-                        <p class="text-red-600 dark:text-red-500 font-semibold" data-i18n-key="founderRole">Co-Founder
-                        </p>
-                    </div>
-                </div>
+        <section id="about" class="py-32">
+            <div class="container text-center">
+                <h2 class="section-title scroll-animate animated-title" data-i18n-key="missionTitle">Our Mission</h2>
+                <p class="section-subtitle scroll-animate" data-i18n-key="missionText">We believe that everyone has the right to feel safe and informed while exploring the beauty of South Africa. TravelHawk was born from a desire to empower travellers and residents with transparent, accessible, and real-time safety information. We're dedicated to building a community that looks out for one another, one alert at a time.</p>
             </div>
         </section>
 
         <!-- Final CTA Section -->
-        <section id="download" class="py-20 bg-red-600">
-            <div class="container mx-auto px-6 text-center text-white">
-                <h2 class="text-3xl md:text-4xl font-bold animated-title" data-i18n-key="ctaTitle">Ready to Explore with
-                    Confidence?</h2>
-                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-red-100" data-i18n-key="ctaSubtitle">Download
-                    TravelHawk today and join a community committed to safer travel.</p>
+        <section id="download" class="py-32" style="background-color: var(--color-primary);">
+            <div class="container text-center text-white">
+                <h2 class="text-3xl md:text-4xl font-bold animated-title" data-i18n-key="ctaTitle">Ready to Explore with Confidence?</h2>
+                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-slate-200" data-i18n-key="ctaSubtitle">Download TravelHawk today and join a community committed to safer travel.</p>
                 <div class="mt-8 flex justify-center items-center space-x-4">
-                    <a href="https://apps.apple.com/za/app/crimehawk/id6584519575" target="_blank"
-                        rel="noopener noreferrer" class="magnetic-button">
-                        <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
-                            <img src="../app-store-badge.svg" alt="Download on the App Store" class="h-12">
+                    <a href="https://apps.apple.com/za/app/crimehawk/id6584519575" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                        <span class="magnetic-content">
+                            <img src="../app-store-badge.svg" alt="Download on the App Store" class="store-badge">
                         </span>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.skeeptechnologies.crimehawk"
-                        target="_blank" rel="noopener noreferrer" class="magnetic-button">
-                        <span class="magnetic-content inline-block transition-transform duration-200 ease-out">
-                            <img src="../google-play-badge.png" alt="Get it on Google Play" class="h-[68px]">
+                    <a href="https://play.google.com/store/apps/details?id=com.skeeptechnologies.crimehawk" target="_blank" rel="noopener noreferrer" class="magnetic-button">
+                        <span class="magnetic-content">
+                            <img src="../google-play-badge-new.svg" alt="Get it on Google Play" class="store-badge">
                         </span>
                     </a>
                 </div>
@@ -568,17 +569,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6">
-                <a href="../contact/" class="hover:text-white transition-colors" data-i18n-key="footerContact">Contact
-                    Us</a>
-                <a href="../privacy-policy/" class="hover:text-white transition-colors"
-                    data-i18n-key="footerPrivacy">Privacy Policy</a>
-                <a href="../terms-conditions/" class="hover:text-white transition-colors"
-                    data-i18n-key="footerTerms">Terms & Conditions</a>
-                <a href="../sources/" class="hover:text-white transition-colors" data-i18n-key="footerSources">Data
-                    Sources</a>
+    <footer class="py-12">
+        <div class="container text-center">
+            <div class="flex justify-center flex-wrap gap-6 mb-6">
+                <a href="../contact/" data-i18n-key="footerContact">Contact Us</a>
+                <a href="../privacy-policy/" data-i18n-key="footerPrivacy">Privacy Policy</a>
+                <a href="../terms-conditions/" data-i18n-key="footerTerms">Terms & Conditions</a>
+                <a href="../sources/" data-i18n-key="footerSources">Data Sources</a>
             </div>
             <p class="text-sm" data-i18n-key="footerProductOf">A product of Skeep Technologies (Pty) Ltd.</p>
             <p class="text-sm mt-2" data-i18n-key="footerCopyright">&copy; 2025 TravelHawk. All rights reserved.</p>
@@ -586,16 +583,14 @@
     </footer>
 
     <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-[60] hidden opacity-0 transition-opacity duration-300">
+    <div id="video-modal" class="fixed inset-0 z-[60] hidden opacity-0">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+        <div id="modal-backdrop"></div>
 
         <!-- Modal Content -->
         <div class="relative w-full h-full flex items-center justify-center p-4 md:p-8">
-            <div class="relative w-full max-w-5xl aspect-video bg-black rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300"
-                id="modal-content">
-                <button id="close-modal"
-                    class="absolute top-4 right-4 z-10 text-white/70 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-2 transition-colors">
+            <div class="relative w-full max-w-5xl aspect-video bg-black rounded-2xl shadow-2xl overflow-hidden" id="modal-content">
+                <button id="close-modal" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: rgba(0,0,0,0.5); border-radius: 50%; padding: 0.5rem; color: white;">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
                 <video id="promo-video" class="w-full h-full object-contain" controls>
@@ -606,8 +601,8 @@
         </div>
     </div>
 
+    <!-- Scripts Block -->
     <script>
-        // Wait for the DOM to be fully loaded before running scripts
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
 
@@ -656,11 +651,14 @@
                     mouse.y = e.clientY;
                 });
 
-                const interactiveElements = document.querySelectorAll('a, button, .interactive-card');
-                interactiveElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => isHovering = true);
-                    el.addEventListener('mouseleave', () => isHovering = false);
-                });
+                function updateInteractiveHover() {
+                    const interactiveElements = document.querySelectorAll('a, button, select, .interactive-card, .voice-item');
+                    interactiveElements.forEach(el => {
+                        el.addEventListener('mouseenter', () => isHovering = true);
+                        el.addEventListener('mouseleave', () => isHovering = false);
+                    });
+                }
+                updateInteractiveHover();
 
                 function animate() {
                     const dx = mouse.x - trail.x;
@@ -704,7 +702,9 @@
             // --- MOBILE MENU ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
 
             // --- SMOOTH SCROLL ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -712,8 +712,8 @@
                     const href = this.getAttribute('href');
                     if (href.length > 1 && document.querySelector(href)) {
                         e.preventDefault();
-                        if (!mobileMenu.classList.contains('hidden')) {
-                            mobileMenu.classList.add('hidden');
+                        if (mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
                         }
                         document.querySelector(href).scrollIntoView({
                             behavior: 'smooth'
@@ -723,38 +723,27 @@
             });
 
             // --- DYNAMIC HEADER ---
-            const header = document.querySelector('header');
+            const header = document.getElementById('site-header');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    header.classList.add('bg-white', 'dark:bg-slate-900', 'shadow-lg', 'dark:shadow-black/20');
-                    header.classList.remove('bg-white/80', 'dark:bg-slate-950/80');
+                    header.classList.add('scrolled');
                 } else {
-                    header.classList.remove('bg-white', 'dark:bg-slate-900', 'shadow-lg', 'dark:shadow-black/20');
-                    header.classList.add('bg-white/80', 'dark:bg-slate-950/80');
+                    header.classList.remove('scrolled');
                 }
             });
 
-            // --- SCROLL ANIMATIONS (Initialization) ---
+            // --- SCROLL ANIMATIONS (IntersectionObserver) ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.remove('opacity-0', 'translate-y-5');
-                        if (entry.target.classList.contains('animated-title')) {
-                            // The animateTitle function will be called from setLanguage after text is loaded
-                        }
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.15 });
 
-            document.querySelectorAll('.scroll-animate, .animated-title').forEach(el => observer.observe(el));
-
-
-            // --- PARALLAX EFFECT ---
-            const hero = document.getElementById('home');
-            window.addEventListener('scroll', () => {
-                hero.style.backgroundPositionY = window.pageYOffset * 0.5 + 'px';
-            });
+            document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
 
             // --- MAGNETIC BUTTONS ---
             document.querySelectorAll('.magnetic-button').forEach(button => {
@@ -770,6 +759,183 @@
                     if (content) content.style.transform = 'translate(0, 0)';
                 });
             });
+
+            // --- INTERACTIVE SAFETY PLANNER LOGIC ---
+            const btnStandard = document.getElementById('btn-standard-route');
+            const btnSafe = document.getElementById('btn-safe-route');
+            const dangerRoute = document.getElementById('danger-route');
+            const safeRoute = document.getElementById('safe-route');
+            const scoreVal = document.getElementById('demo-score-val');
+            const devScoreFill = document.getElementById('device-score-fill');
+            const demoScoreFill = document.getElementById('demo-score-fill');
+            const demoTitle = document.getElementById('demo-details-title');
+            const demoSubtitle = document.getElementById('demo-details-subtitle');
+            const demoDetailsList = document.getElementById('demo-details-list');
+
+            const translationsMock = {
+                en: {
+                    standardTitle: "Standard Routing Index",
+                    standardDesc: "Standard algorithm prioritizes pure distance, driving directly through active crime zones.",
+                    safeTitle: "TravelHawk Safe Routing",
+                    safeDesc: "Active safety logic dynamically maps a detour to avoid spiking zones and robberies.",
+                    hotspotWarning: "🚨 ALERT: Entering Mitchells Plain (High Robbery Hazard)",
+                    spikeWarning: "🚨 ALERT: Approaching N2 vehicle spiking zone",
+                    safeStatus: "✅ Safety Optimized Route",
+                    standardList: [
+                        "🚫 Crosses 2 high-risk precincts",
+                        "🚫 Spiking zone threshold crossed",
+                        "🚫 Risk assessment: CRITICAL"
+                    ],
+                    safeList: [
+                        "🛡️ 0 Spiking zones crossed",
+                        "🛡️ Diverts through low-crime suburbs",
+                        "🛡️ Risk assessment: SECURED"
+                    ]
+                }
+            };
+
+            function triggerRouteAnimation(mode) {
+                // Remove active classes
+                dangerRoute.classList.remove('active');
+                safeRoute.classList.remove('active');
+                
+                // Reset meter widths
+                devScoreFill.style.width = '0%';
+                demoScoreFill.style.width = '0%';
+
+                if (mode === 'standard') {
+                    btnStandard.style.backgroundColor = 'var(--color-danger)';
+                    btnStandard.style.boxShadow = '0 4px 14px 0 rgba(239, 68, 68, 0.4)';
+                    btnSafe.style.backgroundColor = 'var(--text-muted)';
+                    btnSafe.style.boxShadow = 'none';
+
+                    // Trigger SVG animation
+                    setTimeout(() => {
+                        dangerRoute.classList.add('active');
+                    }, 50);
+
+                    // Trigger HUD details update
+                    scoreVal.textContent = "4.2/10";
+                    scoreVal.className = "score-value unsafe";
+                    devScoreFill.style.backgroundColor = "var(--color-danger)";
+                    devScoreFill.style.width = '42%';
+                    demoScoreFill.style.backgroundColor = "var(--color-danger)";
+                    demoScoreFill.style.width = '42%';
+
+                    // Details text list is now only shown on the left panel
+
+                    demoTitle.textContent = translationsMock.en.standardTitle;
+                    demoTitle.className = "text-lg font-bold mb-2 text-red-600";
+                    demoSubtitle.textContent = translationsMock.en.standardDesc;
+                    demoDetailsList.innerHTML = translationsMock.en.standardList.map(i => `<div class="route-details-item" style="font-size:0.9rem; margin-top:0.25rem;">${i}</div>`).join('') 
+                        + `<div class="route-warning-banner" style="margin-top:0.75rem;">${translationsMock.en.hotspotWarning}</div>`
+                        + `<div class="route-warning-banner">${translationsMock.en.spikeWarning}</div>`;
+
+                } else if (mode === 'safe') {
+                    btnSafe.style.backgroundColor = 'var(--color-success)';
+                    btnSafe.style.boxShadow = '0 4px 14px 0 rgba(16, 185, 129, 0.4)';
+                    btnStandard.style.backgroundColor = 'var(--text-muted)';
+                    btnStandard.style.boxShadow = 'none';
+
+                    // Trigger SVG animation
+                    setTimeout(() => {
+                        safeRoute.classList.add('active');
+                    }, 50);
+
+                    // Trigger HUD details update
+                    scoreVal.textContent = "9.8/10";
+                    scoreVal.className = "score-value safe";
+                    devScoreFill.style.backgroundColor = "var(--color-success)";
+                    devScoreFill.style.width = '98%';
+                    demoScoreFill.style.backgroundColor = "var(--color-success)";
+                    demoScoreFill.style.width = '98%';
+
+                    // Details text list is now only shown on the left panel
+
+                    demoTitle.textContent = translationsMock.en.safeTitle;
+                    demoTitle.className = "text-lg font-bold mb-2 text-red-500";
+                    demoSubtitle.textContent = translationsMock.en.safeDesc;
+                    demoDetailsList.innerHTML = translationsMock.en.safeList.map(i => `<div class="route-details-item" style="font-size:0.9rem; margin-top:0.25rem;">${i}</div>`).join('')
+                        + `<div class="route-details-item" style="font-size:0.9rem; margin-top:0.5rem; color:var(--color-success); font-weight:bold;">${translationsMock.en.safeStatus}</div>`;
+                }
+            }
+
+            btnStandard.addEventListener('click', () => triggerRouteAnimation('standard'));
+            btnSafe.addEventListener('click', () => triggerRouteAnimation('safe'));
+
+            // Auto-run safe calculation simulation initially
+            setTimeout(() => {
+                triggerRouteAnimation('safe');
+            }, 1000);
+
+
+            // Voice Alerts Demo logic
+            const playButtons = document.querySelectorAll('.voice-play-btn');
+            const visualizerWave = document.getElementById('visualizer-wave');
+            let currentAudio = null;
+
+            playButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const voiceKey = btn.getAttribute('data-voice-key');
+                    const isPlaying = btn.classList.contains('playing');
+
+                    if (isPlaying) {
+                        // Stop current playback
+                        if (currentAudio) {
+                            currentAudio.pause();
+                            currentAudio.currentTime = 0;
+                        }
+                        btn.classList.remove('playing');
+                        btn.innerHTML = '<i data-lucide="play" class="w-5 h-5"></i>';
+                        lucide.createIcons();
+                        visualizerWave.classList.remove('playing');
+                        return;
+                    }
+
+                    // Reset all buttons
+                    playButtons.forEach(b => {
+                        b.classList.remove('playing');
+                        b.innerHTML = '<i data-lucide="play" class="w-5 h-5"></i>';
+                    });
+
+                    // Stop current speech
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                    }
+                    visualizerWave.classList.remove('playing');
+
+                    // Play audio file
+                    const currentLang = document.documentElement.lang || 'en';
+                    currentAudio = new Audio(`../mp3/${currentLang}_${voiceKey}.mp3`);
+                    
+                    currentAudio.onplay = () => {
+                        btn.classList.add('playing');
+                        btn.innerHTML = '<i data-lucide="square" class="w-5 h-5"></i>';
+                        lucide.createIcons();
+                        visualizerWave.classList.add('playing');
+                    };
+
+                    currentAudio.onended = () => {
+                        btn.classList.remove('playing');
+                        btn.innerHTML = '<i data-lucide="play" class="w-5 h-5"></i>';
+                        lucide.createIcons();
+                        visualizerWave.classList.remove('playing');
+                    };
+
+                    currentAudio.onerror = () => {
+                        console.error(`Audio file not found: ../mp3/${currentLang}_${voiceKey}.mp3`);
+                        btn.classList.remove('playing');
+                        btn.innerHTML = '<i data-lucide="play" class="w-5 h-5"></i>';
+                        lucide.createIcons();
+                        visualizerWave.classList.remove('playing');
+                    };
+
+                    // Speak alert
+                    currentAudio.play().catch(e => console.error("Playback failed:", e));
+                });
+            });
+
 
             // --- LOCALIZATION SCRIPT ---
             const translations = {
@@ -789,10 +955,9 @@
             }
 
             async function setLanguage(lang) {
-                // ***FIXED PATH HERE***
                 let trans;
                 try {
-                    const response = await fetch(`../translations/${lang}.json`);
+                    const response = await fetch(`../translations/${lang}.json?v=${Date.now()}`);
                     if (!response.ok) {
                         throw new Error(`Could not load translation file: ${lang}.json`);
                     }
@@ -838,8 +1003,22 @@
                     }
                 });
 
+                // Update mock calculations based on selected language if translations exist
+                if (trans.standardTitle) translationsMock.en.standardTitle = trans.standardTitle;
+                if (trans.standardDesc) translationsMock.en.standardDesc = trans.standardDesc;
+                if (trans.safeTitle) translationsMock.en.safeTitle = trans.safeTitle;
+                if (trans.safeDesc) translationsMock.en.safeDesc = trans.safeDesc;
+                if (trans.hotspotWarning) translationsMock.en.hotspotWarning = trans.hotspotWarning;
+                if (trans.spikeWarning) translationsMock.en.spikeWarning = trans.spikeWarning;
+                if (trans.safeStatus) translationsMock.en.safeStatus = trans.safeStatus;
+                
+                // Re-draw current route demo state to apply language change
+                const currentMode = btnSafe.style.boxShadow === 'none' ? 'standard' : 'safe';
+                triggerRouteAnimation(currentMode);
+
                 localStorage.setItem('language', lang);
                 languageSelector.value = lang;
+                updateInteractiveHover();
             }
 
             function animateTitle(title) {
@@ -856,7 +1035,6 @@
                 // Reset animation state to allow re-animation on language change
                 document.querySelectorAll('.animated-title').forEach(title => {
                     title.removeAttribute('data-animated');
-                    // Reset opacity for re-triggering animation if needed
                     const spans = title.querySelectorAll('span');
                     spans.forEach(s => { s.style.opacity = '0'; s.style.transform = 'translateY(20px)'; });
                 });
@@ -869,7 +1047,7 @@
 
             // --- VIDEO MODAL LOGIC ---
             const videoModal = document.getElementById('video-modal');
-            const watchBtn = document.getElementById('watch-video-btn');
+
             const closeModalBtn = document.getElementById('close-modal');
             const modalBackdrop = document.getElementById('modal-backdrop');
             const promoVideo = document.getElementById('promo-video');
@@ -879,18 +1057,13 @@
                 videoModal.classList.remove('hidden');
                 // Trigger reflow for transition
                 void videoModal.offsetWidth;
-                videoModal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
+                videoModal.classList.add('active');
                 promoVideo.play();
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
             }
 
             function closeModal() {
-                videoModal.classList.add('opacity-0');
-                modalContent.classList.remove('scale-100');
-                modalContent.classList.add('scale-95');
-
+                videoModal.classList.remove('active');
                 setTimeout(() => {
                     videoModal.classList.add('hidden');
                     promoVideo.pause();
@@ -899,7 +1072,7 @@
                 }, 300); // Match transition duration
             }
 
-            watchBtn.addEventListener('click', openModal);
+
             closeModalBtn.addEventListener('click', closeModal);
             modalBackdrop.addEventListener('click', closeModal);
 
