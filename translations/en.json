@@ -177,6 +177,10 @@
   "showcase2Text": "Get heads-up audio warnings before approaching high-risk zones, keeping your eyes on the road.",
   "showcase3Title": "Hyper-Local Safety Zones",
   "showcase3Text": "Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.",
-  "showcase4Title": "Offline Maps",
-  "showcase4Text": "Navigate safely even when you lose signal in remote areas. Download offline regions and stay protected."
+  "showcase4Title": "Destination Safety Insights",
+  "showcase4Text": "Explore popular South African attractions like the Franschhoek Wine Tram. Review safety information powered by our real-time heatmaps to make informed decisions before you visit.",
+  "formSuccessTitle": "Message Sent!",
+  "formSuccessMessage": "Thank you for getting in touch. We will get back to you as soon as possible.",
+  "formSendAnother": "Send another message",
+  "formErrorMessage": "There was a problem submitting your form. Please try again."
 }

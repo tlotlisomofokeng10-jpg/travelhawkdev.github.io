@@ -95,25 +95,36 @@
             <h1 class="text-4xl font-bold text-center" data-i18n-key="contactTitle">Contact Us</h1>
             <p class="text-lg text-slate-400 text-center mt-4" data-i18n-key="contactSubtitle">Have a question or feedback? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
 
-            <form action="mailto:support@TravelHawk.co.za" method="POST" enctype="text/plain" class="contact-form">
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/mvkpbvkv" method="POST">
                 <div class="form-group">
                     <label for="name" class="form-label" data-i18n-key="formName">Full Name</label>
-                    <input type="text" name="name" id="name" required class="form-input">
+                    <input type="text" name="name" id="name" required class="form-input" autocomplete="name">
                 </div>
                 <div class="form-group">
                     <label for="email" class="form-label" data-i18n-key="formEmail">Email Address</label>
-                    <input type="email" name="email" id="email" required class="form-input">
+                    <input type="email" name="email" id="email" required class="form-input" autocomplete="email">
                 </div>
                 <div class="form-group">
                     <label for="message" class="form-label" data-i18n-key="formMessage">Message</label>
                     <textarea id="message" name="message" rows="4" required class="form-textarea"></textarea>
                 </div>
                 <div style="margin-top: 1rem;">
-                    <button type="submit" class="btn-primary w-full text-center" data-i18n-key="formSubmit">
+                    <button type="submit" class="btn-primary w-full text-center" id="contact-submit" data-i18n-key="formSubmit">
                         Send Message
                     </button>
                 </div>
             </form>
+            
+            <div id="contact-success" class="hidden text-center py-8">
+                <i data-lucide="check-circle" class="w-16 h-16 mx-auto text-green-500 mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2" data-i18n-key="formSuccessTitle">Message Sent!</h2>
+                <p class="text-slate-400 mb-6" data-i18n-key="formSuccessMessage">Thank you for getting in touch. We will get back to you as soon as possible.</p>
+                <button id="reset-form-btn" class="btn-primary" data-i18n-key="formSendAnother">Send another message</button>
+            </div>
+            
+            <div id="contact-error" class="hidden text-center py-4 mt-4 bg-red-100 text-red-700 rounded-lg">
+                <p data-i18n-key="formErrorMessage">There was a problem submitting your form. Please try again.</p>
+            </div>
         </div>
     </main>
 
@@ -264,6 +275,60 @@
 
             const initialLang = localStorage.getItem('language') || (Object.keys(translations).includes(navigator.language.split('-')[0]) ? navigator.language.split('-')[0] : 'en');
             setLanguage(initialLang);
+
+
+            // Handle Contact Form Submission via AJAX
+            const contactForm = document.getElementById('contact-form');
+            const contactSuccess = document.getElementById('contact-success');
+            const contactError = document.getElementById('contact-error');
+            const resetBtn = document.getElementById('reset-form-btn');
+            const submitBtn = document.getElementById('contact-submit');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    if (contactError) contactError.classList.add('hidden');
+                    const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Send Message';
+                    if (submitBtn) {
+                        submitBtn.innerHTML = 'Sending...';
+                        submitBtn.disabled = true;
+                    }
+
+                    const data = new FormData(contactForm);
+                    try {
+                        const response = await fetch(contactForm.action, {
+                            method: contactForm.method,
+                            body: data,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            contactForm.reset();
+                            contactForm.classList.add('hidden');
+                            if (contactSuccess) contactSuccess.classList.remove('hidden');
+                        } else {
+                            if (contactError) contactError.classList.remove('hidden');
+                        }
+                    } catch (error) {
+                        if (contactError) contactError.classList.remove('hidden');
+                    } finally {
+                        if (submitBtn) {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                        }
+                    }
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    if (contactSuccess) contactSuccess.classList.add('hidden');
+                    if (contactError) contactError.classList.add('hidden');
+                    if (contactForm) contactForm.classList.remove('hidden');
+                });
+            }
         });
     </script>
 </body>

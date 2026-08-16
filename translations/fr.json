@@ -173,10 +173,14 @@
   "showcase1Title": "Routage sécurisé",
   "showcase1Text": "Recalcule activement votre chemin pour éviter les points chauds de criminalité connus, les pics récents et les quartiers dangereux.",
   "showcase2Title": "Alertes vocales",
-  "showcase3Title": "Hyper-Local Safety Zones",
-  "showcase3Text": "Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.",
-  "showcase4Title": "Cartes hors ligne",
-  "showcase4Text": "Naviguez en toute sécurité même lorsque vous perdez le signal dans des zones reculées.Téléchargez des régions hors ligne et restez protégé.",
+  "showcase3Title": "Zones de sécurité hyper-locales",
+  "showcase3Text": "Identifiez les zones de danger exactes avec des cartes de gravité codées par couleur et des marqueurs spécifiques localisés pour les détournements et les vols à la portière dans votre région immédiate.",
+  "showcase4Title": "Informations sur la sécurité des destinations",
+  "showcase4Text": "Explorez des attractions sud-africaines populaires comme le Franschhoek Wine Tram. Consultez les informations de sécurité basées sur nos cartes thermiques en temps réel pour prendre des décisions éclairées avant votre visite.",
   "watchVideo": "Regarder la vidéo",
-  "showcase2Text": "Recevez des avertissements sonores avant d’approcher des zones à haut risque, en gardant les yeux sur la route."
+  "showcase2Text": "Recevez des avertissements sonores avant d’approcher des zones à haut risque, en gardant les yeux sur la route.",
+  "formSuccessTitle": "Message envoyé !",
+  "formSuccessMessage": "Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.",
+  "formSendAnother": "Envoyer un autre message",
+  "formErrorMessage": "Un problème est survenu lors de l'envoi de votre formulaire. Veuillez réessayer."
 }

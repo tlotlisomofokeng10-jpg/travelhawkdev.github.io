@@ -174,9 +174,13 @@
   "showcase1Text": "알려진 범죄 핫스팟, 최근 급증, 안전하지 않은 동네를 피하기 위해 경로를 적극적으로 다시 계산합니다.",
   "showcase2Title": "음성 알림",
   "showcase2Text": "고위험 구역에 접근하기 전에 헤드업 오디오 경고를 듣고 도로를 주시하세요.",
-  "showcase3Title": "Hyper-Local Safety Zones",
-  "showcase3Text": "Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.",
-  "showcase4Title": "오프라인 지도",
-  "showcase4Text": "먼 지역에서 신호가 끊겨도 안전하게 탐색하세요.오프라인 지역을 다운로드하고 보호를 받으세요.",
-  "watchVideo": "동영상 보기"
+  "showcase3Title": "초국지적 안전 구역",
+  "showcase3Text": "색상으로 구분된 심각도 지도를 사용하여 정확한 위험 구역을 식별하고, 인근 지역의 납치 및 차량 털이에 대한 특정 마커를 찾아냅니다.",
+  "showcase4Title": "목적지 안전 정보",
+  "showcase4Text": "프란슈훅 와인 트램과 같은 인기 있는 남아프리카 명소를 탐험하세요. 실시간 히트맵 기반의 안전 정보를 검토하여 방문하기 전에 정보에 입각한 결정을 내리세요.",
+  "watchVideo": "동영상 보기",
+  "formSuccessTitle": "메시지가 전송되었습니다!",
+  "formSuccessMessage": "연락해 주셔서 감사합니다. 가능한 한 빨리 답변해 드리겠습니다.",
+  "formSendAnother": "다른 메시지 보내기",
+  "formErrorMessage": "양식을 제출하는 중에 문제가 발생했습니다. 다시 시도해 주세요."
 }

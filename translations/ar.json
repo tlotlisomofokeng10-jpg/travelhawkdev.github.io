@@ -175,8 +175,12 @@
   "showcase1Text": "يعيد حساب مسارك بشكل فعال لتجنب بؤر الجريمة المعروفة والارتفاعات الأخيرة والأحياء غير الآمنة.",
   "showcase2Title": "التنبيهات الصوتية",
   "showcase2Text": "احصل على تحذيرات صوتية قبل الاقتراب من المناطق عالية الخطورة، مع إبقاء عينيك على الطريق.",
-  "showcase3Title": "Hyper-Local Safety Zones",
-  "showcase3Text": "Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.",
-  "showcase4Title": "خرائط دون اتصال",
-  "showcase4Text": "انتقل بأمان حتى عندما تفقد الإشارة في المناطق النائية.قم بتنزيل المناطق غير المتصلة بالإنترنت وابق محميًا."
+  "showcase3Title": "مناطق أمان محلية للغاية",
+  "showcase3Text": "حدد مناطق الخطر الدقيقة باستخدام خرائط خطورة مرمزة بالألوان وعلامات محددة لحوادث الاختطاف والسرقة في منطقتك المباشرة.",
+  "showcase4Title": "رؤى سلامة الوجهة",
+  "showcase4Text": "استكشف مناطق الجذب الشهيرة في جنوب إفريقيا مثل Franschhoek Wine Tram. راجع معلومات السلامة المدعومة بخرائط الحرارة في الوقت الفعلي لاتخاذ قرارات مستنيرة قبل زيارتك.",
+  "formSuccessTitle": "تم إرسال الرسالة!",
+  "formSuccessMessage": "شكرًا لتواصلك معنا. سنرد عليك في أقرب وقت ممكن.",
+  "formSendAnother": "إرسال رسالة أخرى",
+  "formErrorMessage": "حدثت مشكلة أثناء إرسال النموذج. يرجى المحاولة مرة أخرى."
 }

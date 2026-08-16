@@ -176,9 +176,13 @@
   "showcase1Text": "既知の犯罪多発スポット、最近犯罪件数が急増している場所、危険な地域を回避するために、経路を積極的に再計算します。",
   "showcase2Title": "音声アラート",
   "showcase2Text": "道路から目を離さず、危険度の高いゾーンに近づく前にヘッドアップの音声警告を受けてください。",
-  "showcase3Title": "Hyper-Local Safety Zones",
-  "showcase3Text": "Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.",
-  "showcase4Title": "オフラインマップ",
-  "showcase4Text": "遠隔地で信号が失われた場合でも安全にナビゲートできます。オフライン リージョンをダウンロードして保護を維持します。",
-  "watchVideo": "ビデオを見る"
+  "showcase3Title": "ハイパーローカル安全ゾーン",
+  "showcase3Text": "色分けされた重大度マップを使用して正確な危険ゾーンを特定し、すぐ近くの地域でのハイジャックやひったくりなどの特定のマーカーをピンポイントで示します。",
+  "showcase4Title": "目的地の安全に関する洞察",
+  "showcase4Text": "フランシュフック・ワイン・トラムなど、南アフリカの人気の観光スポットを探索しましょう。リアルタイムのヒートマップを活用した安全情報を確認し、訪問前に情報に基づいた決定を下すことができます。",
+  "watchVideo": "ビデオを見る",
+  "formSuccessTitle": "メッセージが送信されました！",
+  "formSuccessMessage": "お問い合わせいただきありがとうございます。できるだけ早くご連絡いたします。",
+  "formSendAnother": "別のメッセージを送信する",
+  "formErrorMessage": "フォームの送信中に問題が発生しました。もう一度お試しください。"
 }

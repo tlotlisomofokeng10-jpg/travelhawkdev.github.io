@@ -176,9 +176,13 @@
   "showcase1Text": "Berechnet Ihren Weg aktiv neu, um bekannte Kriminalitätsschwerpunkte, aktuelle Spitzenwerte und unsichere Viertel zu vermeiden.",
   "showcase2Title": "Sprachwarnungen",
   "showcase2Text": "Erhalten Sie vorab akustische Warnungen, bevor Sie sich Hochrisikozonen nähern, und behalten Sie dabei die Straße im Auge.",
-  "showcase3Title": "Hyper-Local Safety Zones",
-  "showcase3Text": "Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.",
-  "showcase4Title": "Offline-Karten",
-  "showcase4Text": "Navigieren Sie sicher, auch wenn Sie in abgelegenen Gebieten das Signal verlieren. Laden Sie Offline-Regionen herunter und bleiben Sie geschützt.",
-  "watchVideo": "Video ansehen"
+  "showcase3Title": "Hyperlokale Sicherheitszonen",
+  "showcase3Text": "Identifizieren Sie genaue Gefahrenzonen mit farbcodierten Schweregradkarten und gezielten spezifischen Markierungen für Entführungen und Blitzeinbrüche in Ihrer unmittelbaren Umgebung.",
+  "showcase4Title": "Einblicke in die Sicherheit von Reisezielen",
+  "showcase4Text": "Entdecken Sie beliebte südafrikanische Sehenswürdigkeiten wie die Franschhoek Wine Tram. Überprüfen Sie Sicherheitsinformationen, die durch unsere Echtzeit-Heatmaps unterstützt werden, um fundierte Entscheidungen vor Ihrem Besuch zu treffen.",
+  "watchVideo": "Video ansehen",
+  "formSuccessTitle": "Nachricht gesendet!",
+  "formSuccessMessage": "Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns so schnell wie möglich bei Ihnen melden.",
+  "formSendAnother": "Eine weitere Nachricht senden",
+  "formErrorMessage": "Beim Senden Ihres Formulars ist ein Problem aufgetreten. Bitte versuchen Sie es erneut."
 }

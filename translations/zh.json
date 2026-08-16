@@ -177,8 +177,12 @@
   "showcase1Text": "主动重新计算您的路径，以避免已知的犯罪热点、最近的高峰和不安全的社区。",
   "showcase2Title": "语音提醒",
   "showcase2Text": "在接近高风险区域之前获得平视音频警告，并密切关注道路。",
-  "showcase3Title": "Hyper-Local Safety Zones",
-  "showcase3Text": "Identify exact danger zones with color-coded severity maps and pinpointed specific markers for hijackings and smash-and-grabs in your immediate area.",
-  "showcase4Title": "离线地图",
-  "showcase4Text": "即使在偏远地区失去信号也能安全导航。下载离线区域并保持受保护。"
+  "showcase3Title": "超本地安全区",
+  "showcase3Text": "使用彩色编码的严重程度地图识别确切的危险区域，并精确定位您附近区域的劫车和砸窗抢劫的具体标记。",
+  "showcase4Title": "目的地安全洞察",
+  "showcase4Text": "探索弗朗斯胡克葡萄酒电车等南非热门景点。在访问之前，查看由我们的实时热图提供支持的安全信息，以做出明智的决定。",
+  "formSuccessTitle": "消息已发送！",
+  "formSuccessMessage": "感谢您的联系。我们将尽快回复您。",
+  "formSendAnother": "发送另一条消息",
+  "formErrorMessage": "提交表单时出现问题。请重试。"
 }
